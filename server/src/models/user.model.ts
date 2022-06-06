@@ -6,7 +6,7 @@ import { NextFunction } from "express";
 export interface ChannelOffer {
   name: string;
   url: string;
-  description?: string;
+  description: string;
 }
 
 export interface UserInput {
@@ -36,9 +36,10 @@ const userSchema = new mongoose.Schema(
   {
     timestamps: true,
   }
-) as any;
+);
 
-userSchema.pre("save", async function (next:NextFunction) {
+userSchema.pre("save", async function (next) {
+
   const user = this as UserDocument;
 
   if (!user.isModified("password")) {
@@ -53,6 +54,7 @@ userSchema.pre("save", async function (next:NextFunction) {
 
   return next();
 });
+
 
 userSchema.methods.comparePassword = async function (
   candidatePassword: string

@@ -3,8 +3,7 @@ export default {
   host: "localhost",
   //dbUri: "mongodb://localhost:27017/rest-api-tutorial",
   dbUri:
-    // "mongodb+srv://Meowmerry:meowmerry03@cluster0.xpaapsp.mongodb.net/?retryWrites=true&w=majority",
-  "mongodb+srv://meow:HWsztfTMIqDHf5rl@cluster0.sk1g1wo.mongodb.net/?retryWrites=true&w=majority",
+    "mongodb+srv://Meowmerry:meowmerry03@cluster0.xpaapsp.mongodb.net/?retryWrites=true&w=majority",
   saltWorkFactor: 10,
   accessTokenTtl: "15m",
   refreshTokenTtl: "1year",

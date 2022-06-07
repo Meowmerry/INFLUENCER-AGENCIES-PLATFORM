@@ -10,5 +10,6 @@ export const  createRole = async(input: DocumentDefinition<RoleDocuments>)=> {
 }
 
 export const findRoles = async () : Promise<RoleDocuments[]> => {
-  return await IRoleModel.find({});
+  const roles = await IRoleModel.find({});
+  return roles
 };

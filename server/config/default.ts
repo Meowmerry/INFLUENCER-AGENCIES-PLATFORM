@@ -4,8 +4,9 @@ export default {
   //dbUri: "mongodb://localhost:27017/rest-api-tutorial",
   dbUri:
     "mongodb+srv://Meowmerry:meowmerry03@cluster0.xpaapsp.mongodb.net/?retryWrites=true&w=majority",
+    //   "mongodb+srv://meow:HWsztfTMIqDHf5rl@cluster0.sk1g1wo.mongodb.net/?retryWrites=true&w=majority",
   saltWorkFactor: 10,
-  accessTokenTtl: "15m",
+  accessTokenTtl: "5m",
   refreshTokenTtl: "1year",
   publicKey: `-----BEGIN PUBLIC KEY-----
   MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDVLkfzMwnB7/0PK0B8VaQ+y2eB

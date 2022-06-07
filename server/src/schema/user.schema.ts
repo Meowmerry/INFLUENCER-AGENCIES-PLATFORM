@@ -6,6 +6,21 @@ const channelsType = object({
     description: string(),
 });
 
+const addressType = object({
+    address: string({
+        required_error: "Address is required",
+    }),
+    city: string({
+        required_error: "City is required",
+    }),
+    country: string({
+        required_error: "Country is required",
+    }),
+    zipcode: string({
+        required_error: "ZipCode is required",
+    })
+})
+
 
 export const createUserSchema = object({
     body: object({
@@ -22,20 +37,7 @@ export const createUserSchema = object({
             required_error: "Password is required",
         }).min(6, "Password too short - should be 6 chars minimum"),
         channels: array(channelsType),
-        address: object({
-            address: string({
-                required_error: "Address is required",
-            }),
-            city: string({
-                required_error: "City is required",
-            }),
-            country: string({
-                required_error: "Country is required",
-            }),
-            zipcode: string({
-                required_error: "ZipCode is required",
-            })
-        }),
+        address: addressType,
         role: string({
             required_error: "Role is required",
         }),

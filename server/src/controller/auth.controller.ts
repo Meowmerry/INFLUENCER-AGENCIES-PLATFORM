@@ -1,4 +1,4 @@
-import { NextFunction, Request } from "express";
+import { NextFunction, Request, Response } from "express";
 import { comparePasswords } from "../models/user.model";
 import { LoginUserInput } from "../schema/user.schema";
 import { findUser, signToken } from "../services/user.service";
@@ -22,6 +22,7 @@ export const loginHandler = async (
         }
 
         const { accessToken } = await signToken(user);
+
 
         res.status(200).json({
             status: 'success',

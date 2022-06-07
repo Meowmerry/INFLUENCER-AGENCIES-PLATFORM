@@ -1,5 +1,5 @@
 import express from "express";
-import { createUserHandler, getMeHandler, getUsersHandler } from "../controller/user.controller";
+import { createUserHandler, getProfileHandler, getUsersHandler } from "../controller/user.controller";
 import deserializeUser from "../middleware/deserializeUser";
 import requiredUser from "../middleware/requiredUser";
 import validateResource from "../middleware/validateResource";
@@ -12,7 +12,7 @@ router.use(deserializeUser, requiredUser);
 
 router.get('', getUsersHandler);
 
-router.get('/me', getMeHandler);
+router.get('/profile', getProfileHandler);
 
 router.post(`/create`, validateResource(createUserSchema), createUserHandler);
 

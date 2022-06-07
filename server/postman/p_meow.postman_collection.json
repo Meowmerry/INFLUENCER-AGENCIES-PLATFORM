@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "a021d19e-fc0f-4eb9-abbc-1ff209c61f22",
-		"name": "p_meow",
+		"name": "Influencer",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "6002901"
 	},
@@ -10,7 +10,7 @@
 			"name": "Users",
 			"item": [
 				{
-					"name": "http://localhost:1337/api/users/me",
+					"name": "http://localhost:1337/api/users/profile",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -21,7 +21,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:1337/api/users/me",
+							"raw": "http://localhost:1337/api/users/profile",
 							"protocol": "http",
 							"host": [
 								"localhost"

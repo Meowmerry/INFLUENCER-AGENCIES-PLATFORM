@@ -2,10 +2,10 @@ import mongoose from "mongoose";
 import config from "config";
 import logger from './logger'
 
-async function connect() {
-  const dbUri = config.get<string>("dbUri");
+const  connect = async()=> {
+  const DB_URI = config.get<string>("dbUri");
   try {
-      await mongoose.connect(dbUri);
+      await mongoose.connect(DB_URI);
       logger.info("Connected to DB");
   } catch (error) {
     logger.error("Could not connect to DB");

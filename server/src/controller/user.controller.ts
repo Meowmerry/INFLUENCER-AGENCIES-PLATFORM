@@ -39,7 +39,7 @@ export const getUsersHandler = async (
     }
 }
 
-export const getMeHandler = async (
+export const getProfileHandler = async (
     req: Request,
     res: Response,
     next: NextFunction) => {
@@ -51,12 +51,6 @@ export const getMeHandler = async (
                 user,
             },
         })
-        // res.status(200).json({
-        //     status: 'success',
-        //     data: {
-        //         user,
-        //     },
-        // });
     } catch (err: any) {
         next(err);
     }

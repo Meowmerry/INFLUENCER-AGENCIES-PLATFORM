@@ -9,7 +9,7 @@ import mongoose from "mongoose";
 import connect from './utils/connect';
 import loger from './utils/logger';
 import routes from './routes/routes';
-import deserializeUser from './middleware/deserializeUser'
+
 
 
 const PORT = config.get<number>('port')
@@ -26,7 +26,6 @@ app.use(cors());
 
 app.use(express.json({ limit: '10kb' }));
 
-// app.use(deserializeUser);
 
 
 const server = app.listen(PORT, async () => {
@@ -95,19 +94,13 @@ process.on('SIGINT', () => {
 process.on('SIGTERM', function () {
     loger.info(`Process ${ process.pid } received a SIGTERM signal`)
     server.close(function () {
-        process.exit(0);
+       
         setTimeout(() => {
             loger.info(`SIGTERM setTimeout`)
             process.exit(0)
         }, 1000).unref()
+        process.exit(0);
     });
 });
 
-// process.on('uncaughtException', err => {
-//     loger.info(`Uncaught Exception: ${ err.message }`)
-//     process.exit(1)
-//     setTimeout(() => {
-//         loger.info(`uncaughtException setTimeout`)
-//         process.exit(1)
-//     }, 500).unref()
-// })
+

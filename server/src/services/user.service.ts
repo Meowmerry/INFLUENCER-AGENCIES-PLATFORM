@@ -1,3 +1,4 @@
+import config from "config";
 import mongoose, {
   DocumentDefinition,
   FilterQuery,
@@ -5,11 +6,11 @@ import mongoose, {
 } from "mongoose";
 import { omit } from "lodash";
 import UserModel, { UserDocument } from "../models/user.model";
+import { CreateUserInput } from "../schema/user.schema";
+import { signJwt } from "../utils/jwt.utils";
 
 export const createUser = async (
-  input: DocumentDefinition<
-    Omit<UserDocument, "createdAt" | "updatedAt">
-  >
+    input: CreateUserInput["body"]
 ) => {
   try {
     return await UserModel.create(input);
@@ -18,25 +19,38 @@ export const createUser = async (
   }
 };
 
-export const validatePassword = async ({
-  email,
-  password,
-}: {
-  email: string;
-  password: string;
-}) => {
-  const user = await UserModel.findOne({ email });
+export const signToken = async (user: UserDocument) => {
+  // Sign the access token
+  const accessToken = signJwt(
+      { sub: user._id },
+      {
+        expiresIn: `${config.get<string>('accessTokenTtl')}`,
+      }
+  );
 
-  if (!user) {
-    return false;
-  }
-
-  const isValid = await user.comparePassword(password);
-
-  if (!isValid) return false;
-
-  return omit(user.toJSON(), "password");
+  // Return access token
+  return { accessToken };
 };
+
+// export const validatePassword = async ({
+//   email,
+//   password,
+// }: {
+//   email: string;
+//   password: string;
+// }) => {
+//   const user = await UserModel.findOne({ email });
+//
+//   if (!user) {
+//     return false;
+//   }
+//
+//   const isValid = await user.comparePassword(password);
+//
+//   if (!isValid) return false;
+//
+//   return omit(user.toJSON(), "password");
+// };
 
 export const findUser = async (
   query: FilterQuery<UserDocument>

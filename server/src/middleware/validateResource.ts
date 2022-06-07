@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import { AnyZodObject } from "zod";
+import { AnyZodObject, ZodError } from "zod";
 
-const validateResource = (schema:AnyZodObject) => (req:Request, res:Response, next:NextFunction) => {
+const validateResource = (schema: AnyZodObject) => (req: Request, res: Response, next: NextFunction) => {
     try {
         schema.parse({
             body: req.body,
@@ -9,8 +9,15 @@ const validateResource = (schema:AnyZodObject) => (req:Request, res:Response, ne
             params: req.params
         })
         next()
-    } catch (e: any) {
-        return res.status(400).send(e.errors);
+    } catch (err: any) {
+        // return res.status(400).send(err.errors);
+        if (err instanceof ZodError) {
+            return res.status(400).json({
+                status: 'fail',
+                error: err.errors,
+            });
+        }
+        next(err);
     }
 }
 export default validateResource;

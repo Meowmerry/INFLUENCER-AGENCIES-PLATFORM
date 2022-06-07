@@ -20,13 +20,13 @@ const deserializeUser = async (
         }
 
         const { decoded, expired } = verifyJwt(accessToken);
-        if (!decoded) {
-            return next(new AppError(`Invalid token`, 401));
+        if(expired && !decoded){
+            return next(new AppError(`Invalid token or token has expired`, 401));
         }
 
-        if(expired){
-            return next(new AppError(`token has expired`, 401));
-        }
+        // if (!decoded) {
+        //     return next(new AppError(`Invalid token`, 401));
+        // }
 
         res.locals.user = decoded;
         next();

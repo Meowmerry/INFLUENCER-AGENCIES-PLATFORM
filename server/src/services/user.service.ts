@@ -1,6 +1,5 @@
 import config from "config";
 import mongoose, {
-  DocumentDefinition,
   FilterQuery,
   LeanDocument,
 } from "mongoose";
@@ -63,4 +62,9 @@ export const findUser = async (
   UserDocument & { _id: mongoose.Schema.Types.ObjectId }
 > | null> => {
   return UserModel.findOne(query).lean();
+};
+
+export const findUsers = async () : Promise<UserDocument[]> => {
+    const users = await UserModel.find({});
+    return users;
 };

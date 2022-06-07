@@ -1,9 +1,12 @@
 import { NextFunction, Request, Response } from "express";
 import { omit } from "lodash";
 import { excludedToClientFields } from "../constants/exclude.constants";
+import { UserDocument } from "../models/user.model";
 import { CreateUserInput } from "../schema/user.schema";
-import { createUser } from "../services/user.service";
+import { createUser, findUsers } from "../services/user.service";
+import { response } from "../utils/api.response.utils";
 import logger from "../utils/logger";
+
 
 export const createUserHandler = async (
     req: Request<{}, {}, CreateUserInput["body"]>,
@@ -18,18 +21,42 @@ export const createUserHandler = async (
     }
 };
 
+export const getUsersHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction) => {
+    try {
+
+        const users = await findUsers();
+        res.status(200).json({
+            status: 'success',
+            data: {
+                users,
+            },
+        });
+    } catch (err: any) {
+        next(err);
+    }
+}
+
 export const getMeHandler = async (
     req: Request,
     res: Response,
     next: NextFunction) => {
     try {
         const user = res.locals.user;
-        res.status(200).json({
+        return response(res, 200, {
             status: 'success',
             data: {
                 user,
             },
-        });
+        })
+        // res.status(200).json({
+        //     status: 'success',
+        //     data: {
+        //         user,
+        //     },
+        // });
     } catch (err: any) {
         next(err);
     }

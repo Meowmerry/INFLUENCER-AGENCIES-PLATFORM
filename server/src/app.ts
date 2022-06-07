@@ -99,7 +99,7 @@ process.on('SIGTERM', function () {
         setTimeout(() => {
             loger.info(`SIGTERM setTimeout`)
             process.exit(0)
-        }, 500).unref()
+        }, 1000).unref()
     });
 });
 

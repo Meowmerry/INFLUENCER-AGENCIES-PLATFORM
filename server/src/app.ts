@@ -26,7 +26,7 @@ app.use(cors());
 
 app.use(express.json({ limit: '10kb' }));
 
-app.use(deserializeUser);
+// app.use(deserializeUser);
 
 
 const server = app.listen(PORT, async () => {

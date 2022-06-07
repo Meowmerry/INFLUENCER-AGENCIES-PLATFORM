@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { omit } from "lodash";
 import { excludedToClientFields } from "../constants/exclude.constants";
 import { CreateUserInput } from "../schema/user.schema";
@@ -17,3 +17,21 @@ export const createUserHandler = async (
         return res.status(409).send(e.message);
     }
 };
+
+export const getMeHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction) => {
+    try {
+        const user = res.locals.user;
+        res.status(200).json({
+            status: 'success',
+            data: {
+                user,
+            },
+        });
+    } catch (err: any) {
+        next(err);
+    }
+}
+

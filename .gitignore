@@ -20,3 +20,5 @@ coverage/
 .env
 
 config
+build
+config

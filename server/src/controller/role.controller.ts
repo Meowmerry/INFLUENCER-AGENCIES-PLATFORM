@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
-import { omit } from "lodash";
-import { createRoleSchema } from "../schema/role.schema";
-import { createRole } from "../services/role.service";
+import { createRole, findRoles } from "../services/role.service";
 import logger from "../utils/logger";
 
 export async function createRoleHandler(req: Request, res: Response) {
@@ -12,4 +10,11 @@ export async function createRoleHandler(req: Request, res: Response) {
         logger.error(e);
         return res.status(409).send(e.message);
       }
+}
+
+export async function getRoleHandler(req: Request, res: Response) {
+
+    const roles = await findRoles();
+    
+    return res.send(roles);
 }

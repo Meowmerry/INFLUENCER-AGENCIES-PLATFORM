@@ -1,4 +1,12 @@
-import { object, string, TypeOf } from "zod";
+import { array, object, string, TypeOf } from "zod";
+
+const channelsType = object({
+  name: string(),
+  url: string(),
+  description: string(),
+});
+
+
 
 export const createUserSchema = object({
   body: object({
@@ -12,25 +20,27 @@ export const createUserSchema = object({
       required_error: "Email is required",
     }).email("Not a valid email"),
     password: string({
-      required_error: "Name is required",
+      required_error: "Password is required",
     }).min(6, "Password too short - should be 6 chars minimum"),
-    passwordConfirmation: string({
-      required_error: "passwordConfirmation is required",
-    }),
-    channel: object({
-      name: string(),
-      url: string(),
-      description: string(),
+    channels: array(channelsType),
+    address: object({
+      address: string({
+        required_error: "Address is required",
+      }),
+      city: string({
+        required_error: "City is required",
+      }), 
+      country: string({
+        required_error: "Country is required",
+      }), 
+      zipcode:string({
+        required_error: "ZipCode is required",
+      })
     }),
     role: string({
       required_error: "Role is required",
     }),
-  }).refine((data) => data.password === data.passwordConfirmation, {
-    message: "Passwords do not match",
-    path: ["passwordConfirmation"],
-  }),
+  })
 });
-export type CreateUserInput = Omit<
-  TypeOf<typeof createUserSchema>,
-  "body.passwordConfirmation"
->;
+
+export type CreateUserInput =  TypeOf<typeof createUserSchema>

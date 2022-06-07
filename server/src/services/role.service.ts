@@ -1,11 +1,14 @@
-import IRoleModel, { RoleDocuments } from "../models/role.model";
 import { DocumentDefinition } from "mongoose";
+import IRoleModel, { RoleDocuments } from "../models/role.model";
 
-
-export async function createRole(input: DocumentDefinition<RoleDocuments>){
-    try {
-      return await IRoleModel.create(input)
-  }catch (e: any) {
+export const  createRole = async(input: DocumentDefinition<RoleDocuments>)=> {
+  try {
+    return await IRoleModel.create(input);
+  } catch (e: any) {
     throw new Error(e);
   }
 }
+
+export const findRoles = async () : Promise<RoleDocuments[]> => {
+  return await IRoleModel.find({});
+};

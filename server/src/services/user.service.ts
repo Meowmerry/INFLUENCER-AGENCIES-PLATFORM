@@ -2,23 +2,23 @@ import mongoose, { DocumentDefinition, FilterQuery, LeanDocument } from "mongoos
 import { omit } from "lodash";
 import UserModel, { UserDocument } from "../models/user.model";
 
-export async function createUser(
+export const createUser = async (
     input: DocumentDefinition<Omit<UserDocument, "createdAt" | "updatedAt" | "comparePassword">>
-) {
+) => {
     try {
         return await UserModel.create(input);
     } catch (e: any) {
         throw new Error(e);
     }
-}
+};
 
-export async function validatePassword({
+export const validatePassword = async ({
                                            email,
                                            password,
                                        }: {
     email: string;
     password: string;
-}) {
+}) => {
     const user = await UserModel.findOne({ email });
 
     if (!user) {
@@ -31,7 +31,7 @@ export async function validatePassword({
 
     return omit(user.toJSON(), "password");
 
-}
+};
 
 // export const findUser = async (query: FilterQuery<UserDocument>) => UserModel.findOne(query).lean();
 

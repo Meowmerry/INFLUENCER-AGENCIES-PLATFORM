@@ -4,7 +4,8 @@ import mongoose, {
   FilterQuery,
   LeanDocument,
 } from "mongoose";
-import { omit } from "lodash";
+import _, { omit } from "lodash";
+import { excludedToClientFields } from "../constants/exclude.constants";
 import UserModel, { UserDocument } from "../models/user.model";
 import { CreateUserInput } from "../schema/user.schema";
 import { signJwt } from "../utils/jwt.utils";
@@ -20,9 +21,13 @@ export const createUser = async (
 };
 
 export const signToken = async (user: UserDocument) => {
+
+  const clean = _.partial(_.omit, _, excludedToClientFields);
+  const result = clean(user);
+
   // Sign the access token
   const accessToken = signJwt(
-      { sub: user._id },
+      { sub: { ...result } },
       {
         expiresIn: `${config.get<string>('accessTokenTtl')}`,
       }

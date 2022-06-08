@@ -58,6 +58,16 @@
 				{
 					"name": "GetUserProfile",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOnsiX2lkIjoiNjI5ZWFlMjQ2ZTEwZjBiZjFmYjI4OGMwIiwiZmlyc3ROYW1lIjoiTWVvdyIsImxhc3ROYW1lIjoiTWVycnkiLCJlbWFpbCI6Ik1lb3dJbmZsdWVuY2VyQGRldi5jb20iLCJjaGFubmVscyI6W3sibmFtZSI6ImZhY2Vib29rIiwidXJsIjoiaHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL21pby5mbG9yYS45Mi8iLCJkZXNjcmlwdGlvbiI6ImRlc2NyaXB0aW9uIn0seyJuYW1lIjoieW91dHViZSIsInVybCI6Imh0dHBzOi8vd3d3LnlvdXR1YmUuY29tIiwiZGVzY3JpcHRpb24iOiJkZXNjcmlwdGlvbiJ9LHsibmFtZSI6InR3aXRlciIsInVybCI6Imh0dHBzOi8vd3d3LnR3aXRlciIsImRlc2NyaXB0aW9uIjoiZGVzY3JpcHRpb24ifV0sInJvbGUiOiJpbmZsdWVuY2VyIiwiY3JlYXRlZEF0IjoiMjAyMi0wNi0wN1QwMTo0NzoxNi42ODlaIiwidXBkYXRlZEF0IjoiMjAyMi0wNi0wN1QwMTo0NzoxNi42ODlaIiwiX192IjowfSwiaWF0IjoxNjU0NzExMzIxLCJleHAiOjE2NTQ3MTE2MjF9.IYyjauPz9sV0aY3_ZWhscYW0f2G_VaJhB6yLZofnW_vUJpo7lb74aHhafR1onpKs32zLvhcsf89Ej8MCAzsuqSLdiFygsFsAwTchVg0tHtpzIbEyF3d8kFFwLl0jGFwrH5mLqQYR9s_CkhI2PDc3sJH5kl6bWZOa8NP5RX0feMY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -157,13 +167,13 @@
 					"response": []
 				},
 				{
-					"name": "Login",
+					"name": "LoginAsUser",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"MeowInfluencer@dev.com\",\n     \"password\": \"123456\"\n}",
+							"raw": "{\n    \"email\": \"MeowInfluencer@dev.com\",\n    \"password\": \"123456\", \n    \"role\" : \"influencer\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -171,14 +181,42 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/auth/login",
+							"raw": "{{url}}/api/auth/loginUser",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"auth",
-								"login"
+								"loginUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginAsCompany",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"MeowCompany@dev.com\",\n    \"password\": \"123456\", \n    \"role\" : \"brand\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/loginCompany",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"loginCompany"
 							]
 						}
 					},
@@ -196,7 +234,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\n    \"companyName\" : \"Software Comapnay\",\n    \"webSite\" : \"www.Software-Comapnay.com\",\n\t\"firstName\":\"Marin\",\n    \"lastName\": \"Smith\",\n    \"email\": \"MeowCompany@dev.com\",\n\t\"password\":\"123456\",\n    \"address\":{\n        \"address\" :\"123/256 Wevlary\", \n         \"city\" : \"Alabama\", \n          \"country\" : \"USA\", \n           \"zipcode\" : \"123456\"\n    },\n\t\"role\": \"brand\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -238,6 +276,16 @@
 				{
 					"name": "GetCompanyProfile",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOnsiX2lkIjoiNjJhMGVkNDVmOWYxNzhmMTk3MGQ1ODVmIiwiY29tcGFueU5hbWUiOiJTb2Z0d2FyZSBDb21hcG5heSIsIndlYlNpdGUiOiJ3d3cuU29mdHdhcmUtQ29tYXBuYXkuY29tIiwiZmlyc3ROYW1lIjoiTWFyaW4iLCJsYXN0TmFtZSI6IlNtaXRoIiwiZW1haWwiOiJNZW93Q29tcGFueUBkZXYuY29tIiwiYWRkcmVzcyI6eyJhZGRyZXNzIjoiMTIzLzI1NiBXZXZsYXJ5IiwiY2l0eSI6IkFsYWJhbWEiLCJjb3VudHJ5IjoiVVNBIiwiemlwY29kZSI6IjEyMzQ1NiJ9LCJyb2xlIjoiYnJhbmQiLCJjcmVhdGVkQXQiOiIyMDIyLTA2LTA4VDE4OjQxOjA5LjYzMloiLCJ1cGRhdGVkQXQiOiIyMDIyLTA2LTA4VDE4OjQxOjA5LjYzMloiLCJfX3YiOjB9LCJpYXQiOjE2NTQ3MTU1NjcsImV4cCI6MTY1NDcxNjQ2N30.TKUM82cNt7V2qkMyfP4vfkI8M9t48il6boSR41nb3k_V4KJJBq8YCjoKHkpm_2SwkRIUB78Wtat0TZtExc00nBYgQE3wIRzv8dc7PY6tBsoEzvM3F0WI19Pg_3FIPyx1pa46GyNicOWajf52p0yn3P5jn6oxCyE59bbDW-GQ2WA",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {

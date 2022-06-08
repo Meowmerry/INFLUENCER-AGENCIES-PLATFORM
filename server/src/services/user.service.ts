@@ -36,26 +36,7 @@ export const signToken = async (user: UserDocument) => {
   return { accessToken };
 };
 
-// export const validatePassword = async ({
-//   email,
-//   password,
-// }: {
-//   email: string;
-//   password: string;
-// }) => {
-//   const user = await UserModel.findOne({ email });
-//
-//   if (!user) {
-//     return false;
-//   }
-//
-//   const isValid = await user.comparePassword(password);
-//
-//   if (!isValid) return false;
-//
-//   return omit(user.toJSON(), "password");
-// };
-
+// find User by id
 export const findUser = async (
   query: FilterQuery<UserDocument>
 ): Promise<LeanDocument<
@@ -64,7 +45,10 @@ export const findUser = async (
   return UserModel.findOne(query).lean();
 };
 
+
+
+// find all Users
 export const findUsers = async () : Promise<UserDocument[]> => {
-    const users = await UserModel.find({});
+    const users = await UserModel.find({},{password:0});
     return users;
 };

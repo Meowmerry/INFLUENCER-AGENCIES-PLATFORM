@@ -56,21 +56,6 @@ const server = app.listen(PORT, async () => {
 })
 
 
-// process.on('beforeExit', code => {
-//     setTimeout(() => {
-//         loger.info(`on beforeExit:  Process will exit with code: ${ code }`)
-//         process.exit(code)
-//     }, 500).unref()
-// })
-//
-// process.on('exit', code => {
-//
-//     setTimeout(() => {
-//         loger.info(`on exit: Process exited with code: ${ code }`)
-//         process.exit(code)
-//     }, 500).unref()
-// })
-
 process.on('SIGINT', () => {
     loger.info(`SIGINT: Process ${ process.pid } has been interrupted`)
 

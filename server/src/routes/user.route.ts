@@ -8,7 +8,7 @@ import { createUserSchema } from "../schema/user.schema";
 
 const router = express.Router();
 
-//router.use(deserializeUser, requiredUser);
+
 
 router.get('', getUsersHandler);
 

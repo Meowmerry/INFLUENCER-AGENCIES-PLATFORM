@@ -29,8 +29,6 @@ export interface UserInput {
 export interface UserDocument extends UserInput, mongoose.Document {
     createdAt: Date;
     updatedAt: Date;
-
-    // comparePassword(candidatePassword: string, password: string): Promise<Boolean>;
 }
 
 export const comparePasswords = async (candidatePassword: string, hashedPassword: string) => {

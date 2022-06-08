@@ -5,7 +5,7 @@ import men from '../../assets/images/inflencer.png';
 interface CompanyLandingProps { }
 
 const CompanyLanding: FunctionComponent<CompanyLandingProps> = (props) => {
-    const router = useRouter();›
+    const router = useRouter();
 
     return (
         // <div>Company Landing

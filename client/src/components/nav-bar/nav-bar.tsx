@@ -1,64 +1,60 @@
-
-
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import LoginButton from './login-btn'
 export const NavBar = () => {
-    const [navbarOpen, setNavbarOpen] = React.useState(false);
-
-	return (
-        <>
-        <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-pink-500 mb-3">
-          <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-            <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+  return (
+    <nav className=" border-gray-200 px-2 sm:px-4 py-4 pt-6 rounded">
+      <div className="container flex flex-wrap justify-between items-center mx-auto">
+        <a href="https://flowbite.com" className="flex items-center">
+          <img
+            // src="../../assets/logo2x.jpg"
+            className="mr-3 h-6 sm:h-9"
+            // alt="Logo"
+          />
+        </a>
+        <div className="flex md:order-2">
+        <LoginButton/>
+        </div>
+        <div
+          className="hidden justify-be tween items-center w-full md:flex md:w-auto md:order-1"
+          id="mobile-menu-4"
+        >
+          <ul className="nav flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+            <li>
               <a
-                className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-                href="#pablo"
+                href="#"
+                className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent text-sm md:border-0  md:p-0 dark:hover:text-[#4998DD] dark:text[#222325] dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
+                aria-current="page"
               >
-                pink Tailwind Starter Kit
+                Home
               </a>
-              <button
-                className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-                type="button"
-                onClick={() => setNavbarOpen(!navbarOpen)}
+            </li>
+            <li>
+              <a
+                href="#"
+                className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent text-sm md:border-0  md:p-0 dark:hover:text-[#4998DD] dark:text[#222325] dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
               >
-                <i className="fas fa-bars"></i>
-              </button>
-            </div>
-            <div
-              className={
-                "lg:flex flex-grow items-center" +
-                (navbarOpen ? " flex" : " hidden")
-              }
-              id="example-navbar-danger"
-            >
-              <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-                <li className="nav-item">
-                  <a
-                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                    href="#pablo"
-                  >
-                    <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Share</span>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                    href="#pablo"
-                  >
-                    <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Tweet</span>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                    href="#pablo"
-                  >
-                    <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Pin</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </>
-	)
-}
+                Influencers
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent text-sm md:border-0  md:p-0 dark:hover:text-[#4998DD] dark:text[#222325] dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
+              >
+                Brand & Agencies
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 text-sm  md:p-0 dark:hover:text-[#4998DD] dark:text[#222325] dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
+              >
+              Pricing
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+};

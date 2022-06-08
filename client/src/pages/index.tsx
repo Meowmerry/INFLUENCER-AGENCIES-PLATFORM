@@ -7,7 +7,6 @@ export default function Welcome() {
 
   return (
     <>
-      <div className="container mx-auto">HOME</div>
       <LadingPage/>
     </>
   );

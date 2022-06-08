@@ -12,7 +12,7 @@ const routes = (app: Application) => {
     app.use(base_auth, authRouter);
 
     // role
-      app.use(base_role, roleRouter);
+    app.use(base_role, roleRouter);
 
     // user
     app.use(base_user, userRouter);

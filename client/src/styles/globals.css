@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base { /*  base คือตะกูล html body, div, span , u , element tag from html*/
+    header {
+        @apply border-hidden;
+    }
+}
+
+@layer components { /* custom class สร้าง class ใหม่เพิ่ม*/
+     .container {
+         @apply text-sm;
+     }
+}

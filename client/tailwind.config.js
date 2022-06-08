@@ -9,6 +9,9 @@ module.exports = {
         'regal-blue': '#243c5a',
       },
     },
+    container: {
+      center: true,
+    },
   },
   plugins: [],
 }

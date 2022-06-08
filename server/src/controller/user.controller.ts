@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { omit } from "lodash";
 import { excludedToClientFields } from "../constants/exclude.constants";
-import { UserDocument } from "../models/user.model";
 import { CreateUserInput } from "../schema/user.schema";
 import { createUser, findUsers } from "../services/user.service";
 import { response } from "../utils/api.response.utils";

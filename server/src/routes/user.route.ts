@@ -8,11 +8,11 @@ import { createUserSchema } from "../schema/user.schema";
 
 const router = express.Router();
 
-router.use(deserializeUser, requiredUser);
+
 
 router.get('', getUsersHandler);
 
-router.get('/profile', getProfileHandler);
+router.get('/profile',deserializeUser, requiredUser, getProfileHandler);
 
 router.post(`/create`, validateResource(createUserSchema), createUserHandler);
 

@@ -1,14 +1,13 @@
 import React from "react";
 import { useRouter } from "next/router";
-import LadingPage from "./landing-page";
+import HomePage from "./landing-page";
 
 export default function Welcome() {
   const router = useRouter();
 
   return (
-    <>
-      <div className="container mx-auto">HOME</div>
-      <LadingPage/>
-    </>
+    <div className="main-container headerBG">
+      <HomePage />
+</div>
   );
 }

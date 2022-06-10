@@ -25,7 +25,7 @@ export const NavBar = () => {
             <li>
               <a
                 onClick={() => router.push('/')}
-                 href=""
+                href="#"
                 className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent text-sm md:border-0  md:p-0 dark:hover:text-[#4998DD] dark:text[#222325] dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
                 aria-current="page"
               >
@@ -35,7 +35,7 @@ export const NavBar = () => {
             <li>
               <a
                   onClick={() => router.push('/influencer')}
-                 href=""
+                href="#"
                 className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent text-sm md:border-0  md:p-0 dark:hover:text-[#4998DD] dark:text[#222325] dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Influencers
@@ -44,7 +44,7 @@ export const NavBar = () => {
             <li>
               <a
                 onClick={() => router.push('/company')}
-                 href=""
+                href="#"
                 className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent text-sm md:border-0  md:p-0 dark:hover:text-[#4998DD] dark:text[#222325] dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Brands & Agencies
@@ -52,7 +52,7 @@ export const NavBar = () => {
             </li>
             <li>
               <a
-                 href=""
+                href="#"
                 onClick={() => router.push('/pricing')}
                 className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 text-sm  md:p-0 dark:hover:text-[#4998DD] dark:text[#222325] dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
               >

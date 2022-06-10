@@ -97,12 +97,12 @@
   }
   
   .waves {
-    position: absolute;
+    position: fixed;
     width: 100%;
-    height: 35vh;
+    height: 45vh;
     /* min-height: 100px;
     max-height: 200px; */
-    bottom: -13rem;
+    bottom: -10rem;
   }
 
   /* Animation */

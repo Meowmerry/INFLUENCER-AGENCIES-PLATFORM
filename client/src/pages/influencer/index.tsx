@@ -1,16 +1,13 @@
 import type { NextPage } from "next";
 import React, { useEffect, useState } from "react";
-import { LadingPage } from "../../components/LandingPage";
+import { InfluncerLading } from "../../components/influencer/InfluencerLading";
 import { NavBar } from "../../components/nav-bar/NavBar";
 
-
-
-const HomePage: NextPage = () => {
-
+const InfluenCerLandingPage: NextPage = () => {
   return (
     <>
       <NavBar />
-      <LadingPage />
+      <InfluncerLading />
       <svg
         className="waves"
         xmlns="http://www.w3.org/2000/svg"
@@ -50,4 +47,4 @@ const HomePage: NextPage = () => {
     </>
   );
 };
-export default HomePage;
+export default InfluenCerLandingPage;

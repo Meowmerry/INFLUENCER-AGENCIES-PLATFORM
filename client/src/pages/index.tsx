@@ -6,8 +6,8 @@ export default function Welcome() {
   const router = useRouter();
 
   return (
-    <>
-      <HomePage/>
-    </>
+    <div className="main-container headerBG">
+      <HomePage />
+</div>
   );
 }

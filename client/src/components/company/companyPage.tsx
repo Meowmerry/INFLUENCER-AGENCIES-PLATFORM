@@ -9,7 +9,6 @@ const CompanyPage: FunctionComponent<CompanyPageProps> = (props) => {
 
     return (
         <>
-
             <div className="min-h-screen flex flex-col">
                 <NavBar />
                 <div className='relative flex flex-grow'>

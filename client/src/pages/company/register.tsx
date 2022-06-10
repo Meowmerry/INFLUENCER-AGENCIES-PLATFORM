@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import RegisterCompany from "../../components/company/register-company";
+import RegisterCompany from '../../components/company/RegisterCompany';
 
 
 interface RegisterPageProps  {}

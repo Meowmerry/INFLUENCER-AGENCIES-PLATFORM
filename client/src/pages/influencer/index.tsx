@@ -1,13 +1,13 @@
 import type { NextPage } from "next";
 import React, { useEffect, useState } from "react";
-import { InfluncerLading } from "../../components/influencer/InfluencerLading";
+import InfluncerLanding from "../../components/influencer/InfluencerLanding";
 import { NavBar } from "../../components/nav-bar/NavBar";
 
 const InfluenCerLandingPage: NextPage = () => {
   return (
     <>
       <NavBar />
-      <InfluncerLading />
+      <InfluncerLanding />
       <svg
         className="waves"
         xmlns="http://www.w3.org/2000/svg"

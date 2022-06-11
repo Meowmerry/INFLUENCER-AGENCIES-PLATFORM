@@ -33,8 +33,10 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
               <div className="w-full md:w-1/2 px-3">
                 <input
                   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  id="grid-last-name"
-                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  type="lastName"
+                  autoComplete="lastName"
                   required
                   placeholder="Last Name"
                 />

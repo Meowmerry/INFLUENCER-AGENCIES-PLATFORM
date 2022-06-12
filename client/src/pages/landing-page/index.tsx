@@ -1,16 +1,18 @@
 import type { NextPage } from "next";
 import React, { useEffect, useState } from "react";
+import { CarouselLaddingPage } from "../../components/carouse/CarouselLaddingPage";
 import { LadingPage } from "../../components/LandingPage";
 import { NavBar } from "../../components/nav-bar/NavBar";
-
-
+import 'antd/dist/antd.css'
 
 const HomePage: NextPage = () => {
 
   return (
     <>
-      <NavBar />
+      <header className="sticky top-0 z-50 bg-white">    <NavBar /></header>
+
       <LadingPage />
+      <CarouselLaddingPage />
       <svg
         className="waves"
         xmlns="http://www.w3.org/2000/svg"

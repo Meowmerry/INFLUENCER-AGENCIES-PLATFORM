@@ -1,6 +1,8 @@
 import React, { FunctionComponent, useState } from 'react';
 import { useRouter } from "next/router";
-import CompanyPage from "../../components/company/companyPage";
+
+import { NavBar } from '../../components/nav-bar/NavBar';
+import CompanyPage from '../../components/company/companyPage';
 
 
 interface CompanyLandingProps { }
@@ -10,6 +12,7 @@ const CompanyLanding: FunctionComponent<CompanyLandingProps> = (props) => {
 
     return (
         <>
+            <NavBar/>
             <CompanyPage />
             <svg
                 className="waves"

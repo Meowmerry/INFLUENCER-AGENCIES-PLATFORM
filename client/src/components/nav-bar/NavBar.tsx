@@ -6,11 +6,11 @@ import { useRouter } from 'next/router'
 export const NavBar = () => {
   const router = useRouter()
   return (
-    <nav className=" border-gray-200 px-2 sm:px-4 py-4 pt-6 rounded">
+    <nav className=" border-gray-200 px-2 sm:px-4 py-1 pt-2 rounded shadow-lg shadow-[#e2f1ff]">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <div>
           <a href="#" className="flex items-left" onClick={() => router.push('/')}>
-            <Image src="/assets/images/logo2x.jpg" width={100} height={100} className="cursor-pointer object-contain" />
+            <Image src="/assets/images/logo2x.jpg" width={80} height={80} className="cursor-pointer object-contain" />
           </a>
         </div>
 

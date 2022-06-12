@@ -1,21 +1,13 @@
 import React, { useState } from "react";
 import { Carousel } from 'antd';
 import { Images } from './dataImg'
-const contentStyle: React.CSSProperties = {
-  height: '160px',
-  marginBottom: '200px'
-};
+
 
 export const CarouselLaddingPage = () => {
 
   return (
-    <div className="" style={contentStyle}>
-      {/* <h2 className="text-4xl font-bold mb-6">
-        CREATIVE SOCIAL
-        Strategy
-      </h2> */}
+    <div >
       <div className="mt-8">
-        <div>
           <Carousel autoplay slidesToShow={5}>
             <div className="mb-3 md:mb-0 flex justify-center">
               <img
@@ -130,7 +122,6 @@ export const CarouselLaddingPage = () => {
               />
             </div>
           </Carousel>
-        </div>
       </div>
     </div>
   );

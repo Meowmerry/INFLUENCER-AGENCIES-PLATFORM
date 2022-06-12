@@ -1,14 +1,15 @@
 import React from "react";
 import { useRouter } from "next/router";
+import { CarouselLaddingPage } from "./carouse/CarouselLaddingPage";
 
 export const LadingPage = () => {
   const router = useRouter();
   return (
-    <div className="container px-6 mt-24 mx-auto">
+    <div className="container px-6 mt-24 mx-auto ">
       <section className=" text-gray-800 text-center md:text-left">
-        <div className="grid md:grid-cols-2 mt-6">
+        <div className="grid md:grid-cols-2 mt-6 zoom-in-b-to-t">
           <div className="mb-6  md:mb-0 mt-12 ml-24">
-            <h2 className="text-4xl font-bold mb-6">
+            <h2 className="text-4xl font-bold mb-6 ">
               The Best Platform for
               <br />
               <u className="">Influencers</u>
@@ -33,16 +34,17 @@ export const LadingPage = () => {
             </a>
           </div>
 
-          <div className="mb-3 md:mb-0">
+          <div className="mb-3 md:mb-0 ">
             <img
               src="/assets/images/influencer.png"
               width={"80%"}
-              height={"80%"}
-              className="cursor-pointer object-contain"
+              className="cursor-pointer object-contain  "
             />
           </div>
         </div>
+        <CarouselLaddingPage />
       </section>
+    
     </div>
   );
 };

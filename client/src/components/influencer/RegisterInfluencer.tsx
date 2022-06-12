@@ -7,7 +7,7 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
 ) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   return (
-    <div className="container mt-12 px-24 pt-1 mx-auto">
+    <div className="container mt-12 px-24 pt-1 mx-auto zoom-in-b-to-t">
       <section className=" text-gray-800 text-center md:text-left">
         <div className="mt-18 mx-auto max-h-full md:flex flex-row px-14 pb-16 pt-10 shadow-lg shadow-[#4998DD] bg-white border-solid border-1.5 rounded-lg border-gray-300" >
           <form className="w-full ">

@@ -8,7 +8,7 @@ const CompanyPage: FunctionComponent<CompanyPageProps> = (props) => {
     const router = useRouter();
 
     return (
-        <div className="container px-6 mt-24 mx-auto">
+        <div className="container px-6 mt-24 mx-auto zoom-in-b-to-t">
       <section className=" text-gray-800 text-center md:text-left">
         <div className="grid md:grid-cols-2 mt-24">
           <div className="mb-6 mt-16 ml-36 md:mb-0">
@@ -30,8 +30,8 @@ const CompanyPage: FunctionComponent<CompanyPageProps> = (props) => {
           <div className="mb-3 md:mb-0">
             <img
               src="/assets/images/company.png"
-              width={"70%"}
-              height={"70%"}
+              width={"90%"}
+              height={"90%"}
               className="cursor-pointer object-contain"
             />
           </div>

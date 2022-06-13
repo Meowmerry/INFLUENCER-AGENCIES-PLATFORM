@@ -7,8 +7,9 @@ export const CarouselLaddingPage = () => {
 
   return (
     <div >
+  
       <div className="mt-8">
-          <Carousel autoplay slidesToShow={5}>
+        <Carousel autoplay slidesToShow={5} style={{border: "1px solid #4998DD"}}>
             <div className="mb-3 md:mb-0 flex justify-center">
               <img
                 src={Images[0].link}

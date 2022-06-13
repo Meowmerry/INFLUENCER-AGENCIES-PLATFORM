@@ -2,7 +2,8 @@ import React, { FunctionComponent, useState } from 'react';
 import { useRouter } from "next/router";
 
 import { NavBar } from '../../components/nav-bar/NavBar';
-import CompanyPage from '../../components/company/companyPage';
+import CompanyPage from '../../components/company/CompanyPage';
+
 
 
 interface CompanyLandingProps { }

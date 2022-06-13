@@ -1,17 +1,13 @@
-import type { NextPage } from "next";
-import React, { useEffect, useState } from "react";
-import { LadingPage } from "../../components/LandingPage";
+import React from "react";
+import ForgotPassword from "../../components/forget-password/ForgetPassword";
 import { NavBar } from "../../components/nav-bar/NavBar";
-import "antd/dist/antd.css";
 
-const HomePage: NextPage = () => {
+
+export default function ForgotPasswordPage() {
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white">
-        <NavBar />
-      </header>
-      <LadingPage />
-
+      <NavBar />
+      <ForgotPassword />
       <svg
         className="waves"
         xmlns="http://www.w3.org/2000/svg"
@@ -47,8 +43,6 @@ const HomePage: NextPage = () => {
           />
           <use xlinkHref="#gentle-wave" x="48" y="7" fill="#fff" />
         </g>
-      </svg>
-    </>
+      </svg></>
   );
-};
-export default HomePage;
+}

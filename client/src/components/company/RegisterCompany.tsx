@@ -1,12 +1,13 @@
 import React, { FunctionComponent, useState } from 'react';
-
+import { useRouter } from 'next/router'
 
 interface RegisterCompanyProps { }
 
 const RegisterCompany: FunctionComponent<RegisterCompanyProps> = (props) => {
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const router = useRouter()
     return (
-        <div className="container mt-12 px-24 pt-1 mx-auto ">
+        <div className="container mt-12 px-24 pt-1 mx-auto zoom-in-b-to-t-log">
         <section className=" text-gray-800 text-center md:text-left">
           <div className="mt-18 mx-auto max-h-full md:flex flex-row px-14 pb-16 pt-10 shadow-lg shadow-[#4998DD] bg-white border-solid border-1.5 rounded-lg border-gray-300" >
             <form className="w-full ">
@@ -159,9 +160,12 @@ const RegisterCompany: FunctionComponent<RegisterCompanyProps> = (props) => {
                  <p>Already have an account?</p> 
               </div>
               <div className="mt-6 flex justify-center">
-                <button  className="w-80 text-center inline-block px-7 py-3 bg-[#4998DD] text-white font-medium text-sm leading-snug uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mb-2 md:mr-2">
+                <a
+                   onClick={() => router.push('/login')}
+                   href="#"
+                  className="w-80 text-center inline-block px-7 py-3 bg-[#4998DD] text-white font-medium text-sm leading-snug uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mb-2 md:mr-2">
                  Sign In
-                </button>
+                </a>
               </div>
             </form>
           </div>

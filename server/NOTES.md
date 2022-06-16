@@ -8,6 +8,6 @@ yarn add @types/body-parser @types/config @types/cors @types/express @types/node
 
 yarn tsc  --init
 
-npm i -g nodemon  
+yarn i -g nodemon  
 
 yarn build

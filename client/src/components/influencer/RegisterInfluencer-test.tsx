@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import axios from 'axios';
+import axios from "axios";
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
   Channels,
@@ -18,74 +18,34 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
 ) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
-  const { register, handleSubmit } = useForm<InfluencerRegister>();
-
-  const onSubmit: SubmitHandler<InfluencerRegister> = async(data:InfluencerFormData) => {
-    //console.log("data===>", data);
-    const formData = new FormData()
-    const address:InfluencerAddress = {
-      address: data.address.address,
-      city: data.address.address,
-      country: data.address.address,
-      zipcode: data.address.address,
+  const initialValue = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    role: "influencer",
+    channels: [{ name: "", url: "", description: "" }],
+    address: {
+      address: '',
+      city: '',
+      country: '',
+      zipcode:''
     }
-    const channels: Channels[] = data.channels.length > 0 ? data.channels : [];
-    console.log('channels', channels)
-    let temp;
-    for (let i = 0; i < channels.length; i++){
-      const chanel = channels[i].description;
-   
-      temp = chanel;
-      console.log('temp==>', temp)
-      return temp;
-    }
-   
-    const newInfluencer = {
-      firstName: data.firstName,
-      lastName:  data.lastName,
-      email:  data.email,
-      password:  data.password,
-      channels:channels,
-      address: address,
-      role: 'influencer'
-    }
-   
-    const newData = JSON.stringify(newInfluencer)
-    console.log('newData==>', newData)
-    //formData.append('body', JSON.stringify(newInfluencer))
-    setIsLoading(true)
-    axios({
-      method: 'post',
-      url: `${baseURL}/users/create`,
-      //withCredentials: true,
-      headers: { 'Content-Type': 'multipart/form-data' },
-      data: newData,
-    }).then((response) => {
-      console.log('response==>', response)
-    })
-    .catch((error) => {
-      // handle error
-      console.log(error)
-      setIsLoading(false)
-    })
-    // try {
-    //   const res = await registerInfluencer(formData)
-    //   console.log('resss==>', res)
-    // } catch (err) {
-    //   return console.log(err)
-    // }
-    // finally {
-    //   setIsLoading(false)
-    // }
-
-   
   };
+  const [value, setValues] = useState<InfluencerRegister>(initialValue);
+
+  const onSubmit = async (e: InfluencerFormData) => {
+    e.preventDefault();
+    console.log("e==>", e.target.firstName);
+    setValues(e.target)
+  };
+   console.log("value==>",value);
 
   return (
     <div className="container mt-12 px-24 pt-1 mx-auto zoom-in-b-to-t-log">
       <section className=" text-gray-800 text-center md:text-left">
         <div className="mt-18 mx-auto max-h-full md:flex flex-row px-14 pb-16 pt-10 shadow-lg shadow-[#4998DD] bg-white border-solid border-1.5 rounded-lg border-gray-300">
-          <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+          <form className="w-full" onSubmit={(e) => onSubmit(e)}>
             <label
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="grid-first-name"
@@ -97,8 +57,8 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
                 <input //border-rose-500
                   className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                   id="firstName"
-                  {...register("firstName")}
-                  // name="firstName"
+                 // {...register("firstName")}
+                  name="firstName"
                   type="firstName"
                   autoComplete="firstName"
                   required
@@ -109,8 +69,8 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
                 <input
                   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   id="lastName"
-                  {...register("lastName")}
-                  //name="lastName"
+                 // {...register("lastName")}
+                  name="lastName"
                   type="lastName"
                   autoComplete="lastName"
                   required
@@ -127,7 +87,8 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
                   <input
                     id="chanelFacebook"
                     type="checkbox"
-                    {...register(`channels.${0}.name`)}
+                   // {...register(`channels.${0}.name`)}
+                    name="facebook"
                     value="facebook"
                     className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                   />
@@ -160,7 +121,8 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
                   <input
                     id="chanelInstargram"
                     type="checkbox"
-                    {...register(`channels.${1}.name`)}
+                    //{...register(`channels.${1}.name`)}
+                    name="instargram"
                     value="instargram"
                     className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                   />
@@ -273,7 +235,8 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
                   <input
                     id="chanelTwitter"
                     type="checkbox"
-                    {...register(`channels.${2}.name`)}
+                   // {...register(`channels.${2}.name`)}
+                    name="twitter"
                     value="twitter"
                     className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                   />
@@ -309,7 +272,8 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
                   <input
                     id="chanelYoutube"
                     type="checkbox"
-                    {...register(`channels.${3}.name`)}
+                    //{...register(`channels.${3}.name`)}
+                    name="youtube"
                     value="youtube"
                     className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                   />
@@ -349,8 +313,8 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     id="grid-first-address-address"
                     type="text"
-                    {...register("address.address")}
-                    //name="address"
+                    //{...register("address.address")}
+                    name="address"
                     required
                     placeholder="Address"
                   />
@@ -360,8 +324,8 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     id="grid-last-city"
                     type="text"
-                    {...register("address.city")}
-                    //name="city"
+                   // {...register("address.city")}
+                  name="city"
                     placeholder="City"
                     required
                   />
@@ -373,8 +337,8 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     id="grid-first-country"
                     type="text"
-                    {...register("address.country")}
-                    //name="country"
+                    //{...register("address.country")}
+                    name="country"
                     placeholder="Country"
                     required
                   />
@@ -384,8 +348,8 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     id="grid-last-name"
                     type="text"
-                    {...register("address.zipcode")}
-                    //name="zipcode"
+                   // {...register("address.zipcode")}
+                    name="zipcode"
                     placeholder="Zip Code"
                     required
                   />
@@ -403,8 +367,8 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                   <input
                     id="email-address"
-                    {...register("email")}
-                    //name="email"
+                    //{...register("email")}
+                    name="email"
                     type="email"
                     autoComplete="email"
                     required
@@ -416,8 +380,8 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
                   <input
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     id="password"
-                    {...register("password")}
-                    //name="password"
+                    //{...register("password")}
+                    name="password"
                     type="password"
                     autoComplete="current-password"
                     required

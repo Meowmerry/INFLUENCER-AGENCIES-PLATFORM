@@ -11,15 +11,15 @@ export const NavBar = () => {
   return (
 
     <div>
-      <nav className=" border-gray-200 px-2 sm:px-4 py-1 pt-2 rounded shadow-lg shadow-[#e2f1ff]">
+      <nav className="bg-white border-gray-200 px-2 sm:px-4 py-1 pt-2 rounded shadow-lg shadow-[#e2f1ff]">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <div>
           <a href="#" className="flex items-left" onClick={() => router.push('/')}>
             <Image src="/assets/images/logo2x.jpg" width={80} height={80} className="cursor-pointer object-contain" />
           </a>
         </div>
-
         <div className="flex md:order-2">
+
           <LoginButton />
         </div>
         <div

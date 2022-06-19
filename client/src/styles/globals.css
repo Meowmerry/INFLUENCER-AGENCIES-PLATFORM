@@ -5,8 +5,6 @@
 @layer base {
   /*  base คือตะกูล html body, div, span , u , element tag from html*/
   html {
-    width: 100vw;
-    height: 100vh;
     background: linear-gradient(
         180deg,
         #ffffff 40.51%,
@@ -16,7 +14,8 @@
   }
 
   body {
-    @apply bg-gradient-to-b from-white to-blue-200;
+
+    @apply bg-gradient-to-b from-white to-blue-300;
   }
 }
 

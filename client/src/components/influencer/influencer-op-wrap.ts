@@ -1,1 +1,1 @@
-export * as InfluencerOpInterfaces from './interface/influencer-op-data'
+export * as InfluencerOpInterfaces from './interface/influencer-interface-data'

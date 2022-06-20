@@ -179,6 +179,16 @@
       top: 0px;
     }
   }
-
-  
+ .eye-icon{
+  top: 26.5rem;
+  right: 10.5rem;
+ }
+ .eye-icon-login{
+  top: 21.5rem;
+  right: 35.5rem;
+ }
+ .eye-icon-company{
+  top: 28rem;
+  right: 10.5rem;
+ }
 }

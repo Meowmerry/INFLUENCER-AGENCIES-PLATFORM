@@ -1,12 +1,84 @@
 import React, { FunctionComponent, useState } from "react";
 import { useRouter } from "next/router";
-
+import Cookies from "js-cookie";
+import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { InfluencerLogin, InfluencerLoginFormData } from "./interface";
+import Swal from "sweetalert2";
+import { LoginAsCompany, LoginAsInfluencer } from "../../services/api/auth";
+import { storeJwt } from "../../services/helper";
 interface LoginProps {}
 
 const Login: FunctionComponent<LoginProps> = (props) => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const { register, handleSubmit } = useForm<InfluencerLogin>();
+  const onSubmit: SubmitHandler<InfluencerLogin> = async (
+    data: InfluencerLoginFormData
+  ) => {
+    const loginData = {
+      email: data.email,
+      password: data.password,
+      role: data.role,
+    };
+    const newData = JSON.stringify(loginData);
+
+    try {
+      if (loginData.role === "influencer") {
+        const res = await LoginAsInfluencer(newData);
+        const { data } = res;
+        if (data?.status) {
+          Cookies.set("accessToken", data.accessToken);
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Login Influencer Success!",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          storeJwt(data.accessToken);
+          // window.location.reload()
+        } else {
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "Something went wrong!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      } else if (loginData.role === "brand") {
+        const res = await LoginAsCompany(newData);
+        const { data } = res;
+        if (data?.status) {
+          Cookies.set("accessToken", data.accessToken);
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Login Brand & Agency Success!",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          storeJwt(data.accessToken);
+          // window.location.reload()
+        } else {
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "Something went wrong!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <div className="container  px-20 pt-1 mx-auto zoom-in-b-to-t-log">
       <div className="flex text-center text-4xl font-bold justify-center my-8">
@@ -14,7 +86,7 @@ const Login: FunctionComponent<LoginProps> = (props) => {
       </div>
       <section className="text-center md:text-left flex justify-center">
         <div className="bg-white w-[35%] shadow-md  px-8 pt-6 pb-8 mb-4 shadow-[#4998DD]  border-solid border-1.5 rounded-lg border-gray-300">
-          <form>
+          <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-6">
               <label
                 htmlFor="email"
@@ -23,11 +95,12 @@ const Login: FunctionComponent<LoginProps> = (props) => {
                 Login As
               </label>
               <select
+                {...register("role", { required: true })}
                 className="form-select form-select-sm appearance-none block w-full text-sm font-normal  text-gray-700 bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out bg-gray-200   py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 aria-label=".form-select-sm example"
               >
                 <option value="influencer">INFLUENCER</option>
-                <option value="influencer">BRAND & AGENCY</option>
+                <option value="brand">BRAND & AGENCY</option>
               </select>
             </div>
             <div className="mb-6">
@@ -40,6 +113,11 @@ const Login: FunctionComponent<LoginProps> = (props) => {
               <input
                 type="email"
                 id="email"
+                {...register("email", {
+                  required: true,
+                  pattern:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                })}
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 placeholder=""
                 required
@@ -53,11 +131,22 @@ const Login: FunctionComponent<LoginProps> = (props) => {
                 Your password
               </label>
               <input
-                type="password"
+                {...register("password", { required: true })}
+                type={showPassword ? "text" : "password"}
                 id="password"
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 required
               />
+              <div
+                className="icon_button absolute eye-icon-login"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? (
+                  <EyeIcon className="h-5   text-gray-500 cursor-pointer" />
+                ) : (
+                  <EyeOffIcon className="h-5  text-gray-500 cursor-pointer" />
+                )}
+              </div>
             </div>
             <div className="flex items-start mb-6">
               <div className="flex items-center h-5">
@@ -82,9 +171,17 @@ const Login: FunctionComponent<LoginProps> = (props) => {
               </button>
             </div>
             <div className="mt-4 flex justify-center ">
-              <a href="#" className="hover:text-[#4998DD] text-gray-900" onClick={() => router.push('/forgetpassword')}>Forget Password</a>
+              <a
+                href="#"
+                className="hover:text-[#4998DD] text-gray-900"
+                onClick={() => router.push("/forgetpassword")}
+              >
+                Forget Password
+              </a>
             </div>
-            <div className="mt-3 flex justify-center text-gray-900">No Account Yet?</div>
+            <div className="mt-3 flex justify-center text-gray-900">
+              No Account Yet?
+            </div>
             <div className="mt-4 flex justify-center">
               <a
                 onClick={() => router.push("/influencer/register")}

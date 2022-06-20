@@ -21,31 +21,29 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
   const { register, handleSubmit } = useForm<InfluencerRegister>();
 
   const onSubmit: SubmitHandler<InfluencerRegister> = async(data:InfluencerFormData) => {
-    //console.log("data===>", data);
-    const formData = new FormData()
     const address:InfluencerAddress = {
       address: data.address.address,
       city: data.address.address,
       country: data.address.address,
       zipcode: data.address.address,
     }
+
     const channels: Channels[] = data.channels.length > 0 ? data.channels : [];
-    console.log('channels', channels)
-    let temp;
-    for (let i = 0; i < channels.length; i++){
-      const chanel = channels[i].description;
-   
-      temp = chanel;
-      console.log('temp==>', temp)
-      return temp;
-    }
-   
+    const channelReq = channels.length > 0 ? channels.map((item: any) => {
+      return {
+        name: item.name ? item.name : '',
+        description: "",
+        url:""
+      }
+    }) :[]
+    
+   // yup , sweet alert
     const newInfluencer = {
       firstName: data.firstName,
       lastName:  data.lastName,
       email:  data.email,
       password:  data.password,
-      channels:channels,
+      channels:channelReq,
       address: address,
       role: 'influencer'
     }
@@ -58,7 +56,9 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
       method: 'post',
       url: `${baseURL}/users/create`,
       //withCredentials: true,
-      headers: { 'Content-Type': 'multipart/form-data' },
+      headers: { 
+        'Content-Type': 'application/json'
+      },
       data: newData,
     }).then((response) => {
       console.log('response==>', response)

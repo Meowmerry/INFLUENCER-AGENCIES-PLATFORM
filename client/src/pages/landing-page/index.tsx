@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import React, { useEffect, useState } from "react";
 import { LadingPage } from "../../components/LandingPage";
 import { NavBar } from "../../components/nav-bar/NavBar";
-import "antd/dist/antd.css";
+
 
 const HomePage: NextPage = () => {
   return (

@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import axios from 'axios';
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
   Channels,
@@ -8,9 +7,7 @@ import {
   InfluencerFormData,
   InfluencerRegister,
 } from "./interface/influencer-op-data";
-import { formToInfluencerOp } from "./form-data-to-register-op";
 import { registerInfluencer } from "../../services/api";
-import { baseURL } from "../../services/config";
 interface RegisterInfluencerProps {}
 
 const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
@@ -37,7 +34,7 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
       }
     }) :[]
     
-   // yup , sweet alert
+ 
     const newInfluencer = {
       firstName: data.firstName,
       lastName:  data.lastName,
@@ -49,34 +46,16 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
     }
    
     const newData = JSON.stringify(newInfluencer)
-    console.log('newData==>', newData)
-    //formData.append('body', JSON.stringify(newInfluencer))
-    setIsLoading(true)
-    axios({
-      method: 'post',
-      url: `${baseURL}/users/create`,
-      //withCredentials: true,
-      headers: { 
-        'Content-Type': 'application/json'
-      },
-      data: newData,
-    }).then((response) => {
-      console.log('response==>', response)
-    })
-    .catch((error) => {
-      // handle error
-      console.log(error)
+    try {
+      const res = await registerInfluencer(newData)
+      // yup , sweet alert
+      console.log('resss==>', res)
+    } catch (err) {
+      return console.log(err)
+    }
+    finally {
       setIsLoading(false)
-    })
-    // try {
-    //   const res = await registerInfluencer(formData)
-    //   console.log('resss==>', res)
-    // } catch (err) {
-    //   return console.log(err)
-    // }
-    // finally {
-    //   setIsLoading(false)
-    // }
+    }
 
    
   };

@@ -14,8 +14,8 @@
   }
 
   body {
-
-    @apply bg-gradient-to-b from-white to-blue-300;
+    @apply bg-gradient-to-b from-white to-blue-300 h-screen;
+    height: 110vh;
   }
 }
 

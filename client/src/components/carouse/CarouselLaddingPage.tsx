@@ -18,7 +18,7 @@ export const CarouselLaddingPage = () => {
   return (
     <div >
   
-      <div className="mt-8">
+      <div className="mt-2">
       <Slider {...settings}>
         {Images.map((item, i) =>
           <span key={i}>

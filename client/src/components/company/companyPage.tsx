@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { NavBar } from "../nav-bar/NavBar";
+import { NavBar } from "../Nav-bar/NavBar";
 import { useRouter } from "next/router";
 
 interface CompanyPageProps { }

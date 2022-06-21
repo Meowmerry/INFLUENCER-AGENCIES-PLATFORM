@@ -1,13 +1,15 @@
-import React from "react";
-import ForgotPassword from "../../components/forget-password/ForgetPassword";
+import type { NextPage } from "next";
+import React, { useEffect, useState } from "react";
+import InfluncerLanding from "../../components/influencer/InfluencerLanding";
+import { NavProfile } from "../../components/Nav-bar/Nav-Profile";
 import { NavBar } from "../../components/Nav-bar/NavBar";
+import { HomeSponcerships } from "../../components/sponcership/Sponcership";
 
-
-export default function ForgotPasswordPage() {
+const HomeSponcerShipsPage: NextPage = () => {
   return (
     <>
-      <NavBar />
-      <ForgotPassword />
+     <NavProfile />
+      <HomeSponcerships />
       <svg
         className="waves"
         xmlns="http://www.w3.org/2000/svg"
@@ -43,6 +45,8 @@ export default function ForgotPasswordPage() {
           />
           <use xlinkHref="#gentle-wave" x="48" y="7" fill="#fff" />
         </g>
-      </svg></>
+      </svg>
+    </>
   );
-}
+};
+export default HomeSponcerShipsPage;

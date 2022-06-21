@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 import {
   CompanyLoginFormData,
   InfluencerLoginFormData,
-} from "../../../components/login/interface";
+} from "../../../components/Login/interface";
 import { useAxios, baseURL } from "../../config/index";
 
 const LoginAsInfluencer = async (auth: InfluencerLoginFormData) => {

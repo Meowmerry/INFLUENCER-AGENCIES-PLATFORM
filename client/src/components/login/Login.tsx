@@ -39,7 +39,8 @@ const Login: FunctionComponent<LoginProps> = (props) => {
             timer: 2000,
           });
           storeJwt(data.accessToken);
-          // window.location.reload()
+          router.push('/home-sponcerships')
+          // window.location.reload('/home-sponcerships')
         } else {
           Swal.fire({
             position: "top-end",

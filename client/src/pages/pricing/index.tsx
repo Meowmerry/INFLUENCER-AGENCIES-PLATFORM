@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import React, { useEffect, useState } from "react";
-import { NavBar } from "../../components/nav-bar/NavBar";
+import { NavBar } from "../../components/Nav-bar/NavBar";
 import Pricing from "../../components/Pricing/Pricing";
 
 

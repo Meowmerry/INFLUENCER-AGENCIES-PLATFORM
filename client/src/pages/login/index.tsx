@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import React, { useEffect, useState } from "react";
-import Login from "../../components/login/Login";
-import { NavBar } from "../../components/nav-bar/NavBar";
+import Login from "../../components/Login/Login";
+import { NavBar } from "../../components/Nav-bar/NavBar";
 
 
 

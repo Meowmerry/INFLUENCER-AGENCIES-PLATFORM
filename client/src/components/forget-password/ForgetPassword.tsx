@@ -1,5 +1,5 @@
 import React from "react";
-import { NavBar } from "../nav-bar/NavBar";
+import { NavBar } from "../Nav-bar/NavBar";
 
 
 export default function ForgotPassword() {

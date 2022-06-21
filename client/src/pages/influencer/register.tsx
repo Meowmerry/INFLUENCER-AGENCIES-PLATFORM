@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import RegisterInfluencer from '../../components/influencer/RegisterInfluencer';
-import { NavBar } from '../../components/nav-bar/NavBar';
+import { NavBar } from '../../components/Nav-bar/NavBar';
 
 
 

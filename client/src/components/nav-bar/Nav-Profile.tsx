@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 
 
 
-export const NavBar = () => {
+export const NavProfile = () => {
 
   const router = useRouter()
   return (
@@ -29,7 +29,7 @@ export const NavBar = () => {
           <ul className="nav flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
             <li>
               <a
-                onClick={() => router.push('/')}
+                onClick={() => router.push('/home-sponcerships')}
                 href="#"
                 className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent text-sm md:border-0  md:p-0 dark:hover:text-[#4998DD] dark:text[#222325] dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
                 aria-current="page"
@@ -39,7 +39,16 @@ export const NavBar = () => {
             </li>
             <li>
               <a
-                onClick={() => router.push('/influencer')}
+                onClick={() => router.push('/profile')}
+                href="#"
+                className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent text-sm md:border-0  md:p-0 dark:hover:text-[#4998DD] dark:text[#222325] dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
+              >
+               Profile
+              </a>
+            </li>
+            <li>
+              <a
+                onClick={() => router.push('/influencers')}
                 href="#"
                 className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent text-sm md:border-0  md:p-0 dark:hover:text-[#4998DD] dark:text[#222325] dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
               >
@@ -48,20 +57,11 @@ export const NavBar = () => {
             </li>
             <li>
               <a
-                onClick={() => router.push('/company')}
                 href="#"
-                className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent text-sm md:border-0  md:p-0 dark:hover:text-[#4998DD] dark:text[#222325] dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                Brands & Agencies
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={() => router.push('/pricing')}
+                onClick={() => router.push('/notification')}
                 className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 text-sm  md:p-0 dark:hover:text-[#4998DD] dark:text[#222325] dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
               >
-                Pricing
+               Notification
               </a>
             </li>
           </ul>

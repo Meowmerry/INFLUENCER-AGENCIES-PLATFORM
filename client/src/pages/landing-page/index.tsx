@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import React, { useEffect, useState } from "react";
 import { LadingPage } from "../../components/LandingPage";
-import { NavBar } from "../../components/nav-bar/NavBar";
+import { NavBar } from "../../components/Nav-bar/NavBar";
 
 
 const HomePage: NextPage = () => {

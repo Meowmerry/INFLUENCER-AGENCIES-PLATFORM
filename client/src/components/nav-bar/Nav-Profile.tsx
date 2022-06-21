@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import LoginButton from "../Login/ButtonLogin";
 import Image from "next/image"; 
 import { useRouter } from 'next/router'
+import { ButtonProfile } from "../Login/ButtonProfile";
 
 
 
@@ -14,13 +15,12 @@ export const NavProfile = () => {
       <nav className="bg-white border-gray-200 px-2 sm:px-4 py-1 pt-2 rounded shadow-lg shadow-[#e2f1ff]">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <div>
-          <a href="#" className="flex items-left" onClick={() => router.push('/')}>
+            <a href="#" className="flex items-left">
             <Image src="/assets/images/logo2x.jpg" width={80} height={80} className="cursor-pointer object-contain" />
           </a>
         </div>
         <div className="flex md:order-2">
-
-          <LoginButton />
+        <ButtonProfile/>
         </div>
         <div
           className="hidden justify-be tween items-center w-full md:flex md:w-auto md:order-1"

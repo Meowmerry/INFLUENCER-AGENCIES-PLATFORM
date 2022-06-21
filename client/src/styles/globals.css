@@ -191,4 +191,7 @@
   top: 28rem;
   right: 10.5rem;
  }
+ .no-border {
+  border: 0 !important;
+}
 }

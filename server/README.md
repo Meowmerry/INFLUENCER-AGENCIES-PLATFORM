@@ -3,6 +3,7 @@
 
 Note : Make sure you add .env to your .gitignore before pushing any changes to your repository. You will also want to generate new public & private keys
 
+# run yarn dev
 
 
 ## Who is this tutorial for?

@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useForm, SubmitHandler } from "react-hook-form";
-import {LoadingSpinner} from '../loading/Loaging'
-import Swal from "sweetalert2";  
+import { LoadingSpinner } from "../loading/Loaging";
+import Swal from "sweetalert2";
 import {
   Channels,
   InfluencerAddress,
@@ -21,9 +21,9 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
   const { register, handleSubmit } = useForm<InfluencerRegister>();
   const [checkEmail, setCheckEmail] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [checkPassword, setCheckPassword]  = useState<boolean>(false);
+  const [checkPassword, setCheckPassword] = useState<boolean>(false);
   const onSubmit: SubmitHandler<InfluencerRegister> = async (
-   data: InfluencerFormData 
+    data: InfluencerFormData
   ) => {
     const address: InfluencerAddress = {
       address: data.address.address,
@@ -44,9 +44,9 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
           })
         : [];
     if (data.password.length < 6) {
-      setCheckPassword(true)
+      setCheckPassword(true);
     } else {
-      setCheckPassword(false)
+      setCheckPassword(false);
     }
     const newInfluencer = {
       firstName: data.firstName,
@@ -62,24 +62,25 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
     try {
       const res = await registerInfluencer(newData);
       if (res?.status) {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Your work has been saved',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        window.location.reload()
-      } else {
-        setCheckEmail(true)
         Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Something went wrong!',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        setCheckEmail(false)
+          iconHtml: '<img src="/assets/images/logo.png">',
+          customClass: {
+            icon: "no-border",
+          },
+          confirmButtonColor: "#4998DD",
+          title: "Congratulation!",
+          text: "Your account has been successfully created",
+          confirmButtonText: "OK",
+        });
+        window.location.reload();
+      } else {
+        setCheckEmail(true);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          showConfirmButton: true,
+        });
       }
     } catch (err) {
       console.error(err);
@@ -89,9 +90,10 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
   };
 
   return (
- 
     <div className="container mt-12 px-24 pt-1 mx-auto zoom-in-b-to-t-log">
-      {isLoading ? <LoadingSpinner /> :
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
         <section className=" text-gray-800 text-center md:text-left">
           <div className="mt-18 mx-auto max-h-full md:flex flex-row px-14 pb-16 pt-10 shadow-lg shadow-[#4998DD] bg-white border-solid border-1.5 rounded-lg border-gray-300">
             <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
@@ -407,7 +409,9 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
                     <input
                       id="email-address"
                       {...register("email", {
-                        required: true, pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                        required: true,
+                        pattern:
+                          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                       })}
                       type="email"
                       autoComplete="email"
@@ -415,9 +419,11 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
                       className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                       placeholder="Email address"
                     />
-                     {checkEmail ? <p className="text-red-700 text-xs italic mt-1">
-                    Email already exists, please sign up with other email!
-                    </p> : null}
+                    {checkEmail ? (
+                      <p className="text-red-700 text-xs italic mt-1">
+                        Email already exists, please sign up with other email!
+                      </p>
+                    ) : null}
                   </div>
                   <div className="w-full md:w-1/2 px-3">
                     <div className="eye_div">
@@ -441,10 +447,11 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
                         )}
                       </div>
                     </div>
-                    {checkPassword ? <p className="text-red-700 text-xs italic mt-1">
-                    Password too short - should be 6 chars minimum!
-                    </p> : null}
-                
+                    {checkPassword ? (
+                      <p className="text-red-700 text-xs italic mt-1">
+                        Password too short - should be 6 chars minimum!
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -467,7 +474,8 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
               </div>
             </form>
           </div>
-        </section>}
+        </section>
+      )}
     </div>
   );
 };

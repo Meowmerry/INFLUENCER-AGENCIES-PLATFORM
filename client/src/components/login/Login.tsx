@@ -67,9 +67,10 @@ const Login: FunctionComponent<LoginProps> = (props) => {
           Swal.fire({
             position: "top-end",
             icon: "error",
-            title: "Something went wrong!",
+            title: "Oops...",
+            text: "Invalid email or password!",
             showConfirmButton: false,
-            timer: 1500,
+            timer: 2000,
           });
         }
       }

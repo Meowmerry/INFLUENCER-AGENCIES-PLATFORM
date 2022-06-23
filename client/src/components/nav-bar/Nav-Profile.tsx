@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import LoginButton from "../Login/ButtonLogin";
 import Image from "next/image"; 
 import { useRouter } from 'next/router'
 import { ButtonProfile } from "../Login/ButtonProfile";
 
 
 
-export const NavProfile = () => {
+export const NavProfile = () => {  
 
   const router = useRouter()
+
   return (
 
     <div>

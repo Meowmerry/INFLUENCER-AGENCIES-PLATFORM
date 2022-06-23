@@ -89,7 +89,93 @@
   .nav a:hover {
     color: #4998dd;
   }
+  
+  .nav {
+    font-family: "Titillium Web";
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+  }
 
+  .nav * {
+    box-sizing: border-box;
+    transition: all 0.35s ease;
+  }
+
+  .nav li {
+    display: inline-block;
+    list-style: outside none none;
+    margin: 0.5em 1em;
+    paddin: 0;
+  }
+
+  .nav a {
+    padding: 0.5em 0.8em;
+    color: #222325;
+    position: relative;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .nav a::before,
+  .nav a::after {
+    content: "";
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    transition: all 0.35s ease;
+    opacity: 0;
+  }
+
+  .nav a::before {
+    content: "";
+    right: 0;
+    top: 0;
+    border-top: 3px solid #5642dc;
+    border-right: 3px solid #06b6d4;
+    transform: translate(-100%, 50%);
+  }
+
+  .nav a:after {
+    content: "";
+    left: 0;
+    bottom: 0;
+    border-bottom: 3px solid #8318e3;
+    border-left: 3px solid #4998dd;
+    transform: translate(100%, -50%);
+  }
+
+  .nav a:hover:before,
+  .nav a:hover:after {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  .nav a:hover {
+    color: #4998dd;
+  }
+  .user-text {
+    font-family: "Titillium Web";
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #222325;
+    position: relative;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  .user-text > .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+    color: #000;
+    font-family: "Titillium Web";
+  }
+  .user-text .css-1e6y48t-MuiButtonBase-root-MuiButton-root:hover {
+    color: #fff;
+    background-color: transparent;
+  }
   .headerBG {
     position: relative;
     text-align: center;
@@ -179,19 +265,87 @@
       top: 0px;
     }
   }
- .eye-icon{
-  top: 26.5rem;
-  right: 10.5rem;
- }
- .eye-icon-login{
-  top: 21.5rem;
-  right: 35.5rem;
- }
- .eye-icon-company{
-  top: 28rem;
-  right: 10.5rem;
- }
- .no-border {
-  border: 0 !important;
-}
+  .eye-icon {
+    top: 26.5rem;
+    right: 10.5rem;
+  }
+  .eye-icon-login {
+    top: 21.5rem;
+    right: 35.5rem;
+  }
+  .eye-icon-company {
+    top: 28rem;
+    right: 10.5rem;
+  }
+  .no-border {
+    border: 0 !important;
+  }
+  .bg-sponcer-home{
+    background: linear-gradient(360deg, #FFFFFF 57.28%, rgba(255, 255, 255, 0) 100%), #4998DD;
+border: 1px solid #FFFFFF;
+  }
+  .nav-profile {
+    font-family: "Titillium Web";
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .nav-profile * {
+    box-sizing: border-box;
+    transition: all 0.35s ease;
+  }
+
+  .nav-profile li {
+    display: inline-block;
+    list-style: outside none none;
+    margin: 0.5em 1em;
+    paddin: 0;
+  }
+
+  .nav-profile a {
+    padding: 0.5em 0.8em;
+    color: #000;
+    position: relative;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .nav-profile a::before,
+  .nav-profile a::after {
+    content: "";
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    transition: all 0.35s ease;
+    opacity: 0;
+  }
+
+  .nav-profile a::before {
+    content: "";
+    right: 0;
+    top: 0;
+    border-top: 3px solid #5642dc;
+    border-right: 3px solid #06b6d4;
+    transform: translate(-100%, 50%);
+  }
+
+  .nav-profile a:after {
+    content: "";
+    left: 0;
+    bottom: 0;
+    border-bottom: 3px solid #8318e3;
+    border-left: 3px solid #4998dd;
+    transform: translate(100%, -50%);
+  }
+
+  .nav-profile a:hover:before,
+  .nav-profile a:hover:after {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  .nav-profile a:hover {
+    color:  #fff;
+  }
 }

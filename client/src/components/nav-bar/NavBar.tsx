@@ -15,7 +15,7 @@ export const NavBar = () => {
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <div>
           <a href="#" className="flex items-left" onClick={() => router.push('/')}>
-            <Image src="/assets/images/logo2x.jpg" width={80} height={80} className="cursor-pointer object-contain" />
+            <Image src="/assets/images/logo2x.jpg" width={100} height={100} className="cursor-pointer object-contain" />
           </a>
         </div>
         <div className="flex md:order-2">

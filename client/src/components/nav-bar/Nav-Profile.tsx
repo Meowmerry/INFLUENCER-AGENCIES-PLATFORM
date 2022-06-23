@@ -12,11 +12,11 @@ export const NavProfile = () => {
   return (
 
     <div>
-      <nav className="bg-white border-gray-200 px-2 sm:px-4 py-1 pt-2 rounded shadow-lg shadow-[#e2f1ff]">
+      <nav>
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <div>
             <a href="#" className="flex items-left">
-            <Image src="/assets/images/logo2x.jpg" width={80} height={80} className="cursor-pointer object-contain" />
+            <Image src="/assets/images/logo-blue.png" width={100} height={100} className="cursor-pointer object-contain" />
           </a>
         </div>
         <div className="flex md:order-2">
@@ -26,7 +26,7 @@ export const NavProfile = () => {
           className="hidden justify-be tween items-center w-full md:flex md:w-auto md:order-1"
           id="mobile-menu-4"
         >
-          <ul className="nav flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+          <ul className="nav-profile flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
             <li>
               <a
                 onClick={() => router.push('/home-sponcerships')}

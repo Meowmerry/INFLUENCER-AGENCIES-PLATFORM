@@ -1,6 +1,6 @@
 module.exports = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx}',
+    './src/pages/**/*.{js,ts,jsx,tsx}','./src/**/*.{html,js}',
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
@@ -13,10 +13,7 @@ module.exports = {
       center: true,
     },
   },
-  // content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
-  plugins: [
-    require('tw-elements/dist/plugin')
-  ]
+  plugins: []
 
 }
 

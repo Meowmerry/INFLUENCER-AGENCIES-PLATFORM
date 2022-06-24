@@ -1,7 +1,8 @@
 import {
   InfluencerFormData,
 } from "../../../components/influencer/interface/influencer-interface-data";
-import { useAxios, baseURL } from "../../config/index";
+import { baseURL, useAxios } from "../../helper";
+
 
 const registerInfluencer = async (data: InfluencerFormData) => {
   try {
@@ -10,7 +11,6 @@ const registerInfluencer = async (data: InfluencerFormData) => {
     });
     return res;
   } catch (error:any) {
-      console.log("error-->", error);
       return error;
   }
 };

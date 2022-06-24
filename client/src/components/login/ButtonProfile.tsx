@@ -5,11 +5,14 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { getSession } from '../../services/helper'
+
 interface ButtonProfileProps {}
 
 export const ButtonProfile: FunctionComponent<ButtonProfileProps> = (props) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const token = getSession()
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -18,8 +21,9 @@ export const ButtonProfile: FunctionComponent<ButtonProfileProps> = (props) => {
   };
   const [isLogin, setIsLogin] = useState<boolean>(false);
   const router = useRouter();
-  const token = Cookies.get("accessToken")
+ 
   useEffect(() => {
+    console.log('Token==>', token)
     if (token) {
       
     }
@@ -69,7 +73,8 @@ export const ButtonProfile: FunctionComponent<ButtonProfileProps> = (props) => {
         aria-expanded="false"
       >
         <img
-          src="https://mdbootstrap.com/img/new/avatars/2.jpg"
+          // src="https://mdbootstrap.com/img/new/avatars/2.jpg"
+          src="/assets/images/profile.png"
           className="rounded-full"
           style={{ height: "50px", width: "50px" }}
           alt=""

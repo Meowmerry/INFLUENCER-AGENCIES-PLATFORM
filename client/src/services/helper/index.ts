@@ -1,4 +1,7 @@
 import Cookies from 'js-cookie'
+import axios from 'axios';
+const useAxios = axios.create()
+const baseURL = "http://localhost:1337/api"
 
 
 // # Store Cookie Helpers (work with jwt - [json web token])
@@ -15,6 +18,6 @@ export {
     storeJwt,
     removeJwt,
     getSession,
-    getRole
+    getRole,useAxios,baseURL
 
 }

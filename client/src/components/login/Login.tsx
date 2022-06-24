@@ -7,6 +7,7 @@ import { InfluencerLogin, InfluencerLoginFormData } from "./interface";
 import Swal from "sweetalert2";
 import { LoginAsCompany, LoginAsInfluencer } from "../../services/api/auth";
 import { storeJwt } from "../../services/helper";
+import Link from "next/link";
 interface LoginProps {}
 
 const Login: FunctionComponent<LoginProps> = (props) => {
@@ -26,6 +27,7 @@ const Login: FunctionComponent<LoginProps> = (props) => {
     const newData = JSON.stringify(loginData);
 
     try {
+      console.log("role", newData);
       if (loginData.role === "influencer") {
         const res = await LoginAsInfluencer(newData);
         const { data } = res;
@@ -39,8 +41,7 @@ const Login: FunctionComponent<LoginProps> = (props) => {
             timer: 2000,
           });
           storeJwt(data.accessToken);
-          router.push('/home-sponcerships')
-          // window.location.reload('/home-sponcerships')
+          router.push("/home-sponcerships");
         } else {
           Swal.fire({
             position: "top-end",
@@ -63,7 +64,7 @@ const Login: FunctionComponent<LoginProps> = (props) => {
             timer: 2000,
           });
           storeJwt(data.accessToken);
-          // window.location.reload()
+          router.push("/home-influencer");
         } else {
           Swal.fire({
             position: "top-end",
@@ -82,7 +83,7 @@ const Login: FunctionComponent<LoginProps> = (props) => {
     }
   };
   return (
-    <div className="container  px-20 pt-1 mx-auto zoom-in-b-to-t-log">
+    <div className="container  px-20 pt-1 mx-auto zoom-in-b-to-t-log z-40">
       <div className="flex text-center text-4xl font-bold justify-center my-8">
         <div>Login</div>
       </div>
@@ -173,35 +174,36 @@ const Login: FunctionComponent<LoginProps> = (props) => {
               </button>
             </div>
             <div className="mt-4 flex justify-center ">
-              <a
-                href="#"
-                className="hover:text-[#4998DD] text-gray-900"
-                onClick={() => router.push("/forgetpassword")}
-              >
-                Forget Password
-              </a>
+              {/* <Link href="/forgetpassword"> */}
+              <Link href="/not-found">
+                <a href="#" className="hover:text-[#4998DD] text-gray-900">
+                  Forget Password
+                </a>
+              </Link>
             </div>
             <div className="mt-3 flex justify-center text-gray-900">
               No Account Yet?
             </div>
             <div className="mt-4 flex justify-center">
-              <a
-                onClick={() => router.push("/influencer/register")}
-                href="#"
-                className="w-80 text-center cursor-pointer inline-block px-7 py-3 bg-[#4998DD] text-white font-medium text-sm leading-snug uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mb-2 md:mr-2"
-              >
-                Sing UP As a Brand
-              </a>
+              <Link href="/company/register">
+                <a
+                  href="#"
+                  className="w-80 text-center cursor-pointer inline-block px-7 py-3 bg-[#4998DD] text-white font-medium text-sm leading-snug uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mb-2 md:mr-2"
+                >
+                  Sing UP As a Brand
+                </a>
+              </Link>
             </div>
 
             <div className="mt-4 flex justify-center">
-              <a
-                onClick={() => router.push("/company/register")}
-                href="#"
-                className="w-80 cursor-pointer text-center inline-block px-7 py-3 bg-[#4998DD] text-white font-medium text-sm leading-snug uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mb-2 md:mr-2"
-              >
-                Sign Up As an Influencer
-              </a>
+              <Link href="/influencer/register">
+                <a
+                  href="#"
+                  className="w-80 cursor-pointer text-center inline-block px-7 py-3 bg-[#4998DD] text-white font-medium text-sm leading-snug uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mb-2 md:mr-2"
+                >
+                  Sign Up As an Influencer
+                </a>
+              </Link>
             </div>
           </form>
         </div>

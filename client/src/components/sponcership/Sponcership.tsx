@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import {
   Button,
   Card,
@@ -8,14 +8,31 @@ import {
   Divider,
 } from "@mui/material";
 import { itemData } from "./mockData";
+import {getSession} from '../../services/helper'
+
 interface HomeSponcershipsProps {}
 
-export const HomeSponcerships: FunctionComponent<HomeSponcershipsProps> = (
+export const HomeSponcerships: FunctionComponent<HomeSponcershipsProps> = () => {
+  const token = getSession()
+  useEffect(() => {
+    getProfileInc()
+  }, [])
   
+  const getProfileInc = async () => {
+    try {
+      if (token) {
+      
+      } else {
+      
+      }
+    } catch (err) {
+      console.log(err)
+    }
+   
+  }
 
-) => {
   return (
-    <div className="bg-contain bg-center bg-white m-16 mr-40 ml-40 shadow-lg shadow-[#4998DD]  border-solid border-1.5 rounded-lg border-gray-300 ">
+    <div className="z-40 bg-contain bg-center bg-white m-16 mr-40 ml-40 shadow-lg shadow-[#4998DD]  border-solid border-1.5 rounded-lg border-gray-300">
       <div className="p-8 w-full flex flex-wrap justify-evenly aspect-video">
         {itemData.map((item) => (
           <Card sx={{ maxWidth: 450 }} className="pt-4 pr-4 pl-4 m-6  ">

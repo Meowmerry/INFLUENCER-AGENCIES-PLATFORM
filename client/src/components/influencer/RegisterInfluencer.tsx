@@ -71,8 +71,8 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
           title: "Congratulation!",
           text: "Your account has been successfully created",
           confirmButtonText: "OK",
-        });
-        window.location.reload();
+        }).then(()=> router.push('/login'));
+      
       } else {
         setCheckEmail(true);
         Swal.fire({
@@ -90,7 +90,7 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
   };
 
   return (
-    <div className="container mt-12 px-24 pt-1 mx-auto zoom-in-b-to-t-log">
+    <div className="container mt-12 px-24 pt-1 mx-auto zoom-in-b-to-t-log z-40">
       {isLoading ? (
         <LoadingSpinner />
       ) : (
@@ -99,7 +99,7 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
             <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
               <label
                 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                htmlFor="grid-first-name"
+                htmlFor="grid-first-name" 
               >
                 Account Information
               </label>
@@ -457,7 +457,8 @@ const RegisterInfluencer: FunctionComponent<RegisterInfluencerProps> = (
               </div>
               <div className="mt-6 flex justify-center">
                 <button className="w-80 text-center inline-block px-7 py-3 bg-[#4998DD] text-white font-medium text-sm leading-snug uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mb-2 md:mr-2">
-                  Sign Up
+                    Sign Up
+                    
                 </button>
               </div>
               <div className="mt-4 text-sm leading-snug  text-center flex justify-center">

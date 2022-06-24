@@ -5,7 +5,7 @@ interface PricingProps { }
 const Pricing: FunctionComponent<PricingProps> = (props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   return (
-    <div className="container mt-12 px-24 pt-1 mx-auto zoom-in-b-to-t">
+    <div className="container mt-12 px-24 pt-1 mx-auto zoom-in-b-to-t z-40">
       <div className="flex text-center text-4xl font-bold justify-center my-12" ><div>Service Fee</div></div>
       <section className=" text-gray-800 text-center md:text-left">
         <div className="flex flex-wrap justify-around">

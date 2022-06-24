@@ -1,14 +1,14 @@
-import Cookies from "js-cookie";
 import {
   CompanyLoginFormData,
   InfluencerLoginFormData,
 } from "../../../components/Login/interface";
-import { useAxios, baseURL } from "../../config/index";
+import { useAxios, baseURL } from "../../helper";
+import {ENDPOINT} from '../../endpoint';
 
 const LoginAsInfluencer = async (auth: InfluencerLoginFormData) => {
 
   try {
-    const res = await useAxios.post(`${baseURL}/auth/loginUser`, auth, {
+    const res = await useAxios.post(`${baseURL}${ENDPOINT.AUTH_LOGIN}`, auth, {
       headers: { "Content-Type": "application/json" },
     });
     return res;
@@ -17,10 +17,12 @@ const LoginAsInfluencer = async (auth: InfluencerLoginFormData) => {
     return error;
   }
 };
+console.log(`${baseURL}${ENDPOINT.AUTH_LOGIN_COMPANY}`)
 
-const LoginAsCompany = async(auth: CompanyLoginFormData) => {
+const LoginAsCompany = async (auth: CompanyLoginFormData) => {
+
   try {
-    const res = await useAxios.post(`${baseURL}/auth/loginCompany`, auth, {
+    const res = await useAxios.post(`${baseURL}${ENDPOINT.AUTH_LOGIN_COMPANY}`, auth, {
       headers: { "Content-Type": "application/json" },
     });
     return res;

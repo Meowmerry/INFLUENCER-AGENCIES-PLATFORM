@@ -6,7 +6,7 @@ interface InfluncerLandingProps {}
 const InfluncerLanding: FunctionComponent<InfluncerLandingProps> = () => {
   const router = useRouter();
   return (
-    <div className="container px-6 mt-24 mx-auto zoom-in-b-to-t">
+    <div className="container px-6 mt-24 mx-auto zoom-in-b-to-t z-40">
       <section className=" text-gray-800 text-center md:text-left">
         <div className="grid md:grid-cols-2 mt-24">
           <div className="mb-6 mt-16 ml-36 md:mb-0">

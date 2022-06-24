@@ -59,8 +59,7 @@ const RegisterCompany: FunctionComponent<RegisterCompanyProps> = (props) => {
           title: "Congratulation!",
           text: "Your account has been successfully created",
           confirmButtonText: "OK",
-        });
-        window.location.reload();
+        }).then(()=> router.push('/login'));
       } else {
         setCheckEmail(true);
         Swal.fire({
@@ -77,7 +76,7 @@ const RegisterCompany: FunctionComponent<RegisterCompanyProps> = (props) => {
     }
   };
   return (
-    <div className="container mt-12 px-24 pt-1 mx-auto zoom-in-b-to-t-log">
+    <div className="container mt-12 px-24 pt-1 mx-auto zoom-in-b-to-t-log z-40">
       {isLoading ? (
         <LoadingSpinner />
       ) : (

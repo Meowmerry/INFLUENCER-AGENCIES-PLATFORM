@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { itemData } from "./mockData";
 import {getSession} from '../../services/helper'
+import { getInfluencerProfile } from "../../services/api/getData";
 
 interface HomeSponcershipsProps {}
 
@@ -21,7 +22,8 @@ export const HomeSponcerships: FunctionComponent<HomeSponcershipsProps> = () => 
   const getProfileInc = async () => {
     try {
       if (token) {
-      
+        const res = await getInfluencerProfile()
+        console.log('res line 26-->',res)
       } else {
       
       }
@@ -34,8 +36,8 @@ export const HomeSponcerships: FunctionComponent<HomeSponcershipsProps> = () => 
   return (
     <div className="z-40 bg-contain bg-center bg-white m-16 mr-40 ml-40 shadow-lg shadow-[#4998DD]  border-solid border-1.5 rounded-lg border-gray-300">
       <div className="p-8 w-full flex flex-wrap justify-evenly aspect-video">
-        {itemData.map((item) => (
-          <Card sx={{ maxWidth: 450 }} className="pt-4 pr-4 pl-4 m-6  ">
+        {itemData.map((item, i) => (
+          <Card sx={{ maxWidth: 450 }} className="pt-4 pr-4 pl-4 m-6" key={i}>
             <CardMedia
               component="img"
               alt="green iguana"

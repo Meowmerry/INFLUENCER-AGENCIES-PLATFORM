@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import React, { useEffect, useState } from "react";
 import { NavProfile } from "../../components/Nav-bar/Nav-Profile";
-import { HomeSponcerships } from "../../components/sponcership/Sponcership";
+import { HomeSponcerships } from "../../components/sponcership/SponcershipHome";
 
 const HomeSponcerShipsPage: NextPage = () => {
   return (

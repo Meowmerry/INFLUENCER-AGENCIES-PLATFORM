@@ -17,7 +17,7 @@ const LoginAsInfluencer = async (auth: InfluencerLoginFormData) => {
     return error;
   }
 };
-console.log(`${baseURL}${ENDPOINT.AUTH_LOGIN_COMPANY}`)
+
 
 const LoginAsCompany = async (auth: CompanyLoginFormData) => {
 

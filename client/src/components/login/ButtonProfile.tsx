@@ -23,10 +23,7 @@ export const ButtonProfile: FunctionComponent<ButtonProfileProps> = (props) => {
   const router = useRouter();
  
   useEffect(() => {
-    console.log('Token==>', token)
-    if (token) {
-      
-    }
+
     setIsLogin(true)
   },[])
 

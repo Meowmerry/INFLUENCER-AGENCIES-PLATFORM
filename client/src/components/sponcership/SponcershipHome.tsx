@@ -25,7 +25,7 @@ export const HomeSponcerships: FunctionComponent<HomeSponcershipsProps> = () => 
         const res = await getInfluencerProfile()
         console.log('res line 26-->',res)
       } else {
-      
+       
       }
     } catch (err) {
       console.log(err)

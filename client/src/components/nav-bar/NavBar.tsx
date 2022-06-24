@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import LoginButton from "../Login/ButtonLogin";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import {SwitchesButton} from '../switch/Switch'
 import Link from "next/link";
 
 export const NavBar = () => {
@@ -25,6 +26,7 @@ export const NavBar = () => {
             </a>
           </div>
           <div className="flex md:order-2">
+            <SwitchesButton/>
             <LoginButton />
           </div>
           <div

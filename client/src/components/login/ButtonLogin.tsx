@@ -1,11 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
-import React, { Fragment, useState } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
+import React from "react";
+import { Menu } from "@headlessui/react";
 import { useRouter } from "next/router";
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function LoginButton() {
   const router = useRouter();

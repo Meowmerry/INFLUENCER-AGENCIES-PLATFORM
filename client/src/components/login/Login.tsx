@@ -38,7 +38,7 @@ const Login: FunctionComponent<LoginProps> = (props) => {
             icon: "success",
             title: "Login Influencer Success!",
             showConfirmButton: false,
-            timer: 2000,
+            timer: 1500,
           });
           storeJwt(data.accessToken);
           router.push("/home-sponcerships");
@@ -48,7 +48,7 @@ const Login: FunctionComponent<LoginProps> = (props) => {
             icon: "error",
             title: "Something went wrong!",
             showConfirmButton: false,
-            timer: 2000,
+            timer: 1500,
           });
         }
       } else if (loginData.role === "brand") {

@@ -3,7 +3,7 @@ import React, { Fragment, useState, FunctionComponent, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import {UserData} from '../sponcership/interface/user-interface'
+import { UserData } from '../sponcership/interface/user-interface'
 interface ButtonProfileProps {
   isLogin: boolean;
   handleLogout: () => void;
@@ -12,7 +12,7 @@ interface ButtonProfileProps {
 }
 
 export const ButtonProfile: FunctionComponent<ButtonProfileProps> = (props) => {
-  const { handleLogout, isLoading, isLogin,userData } = props;
+  const { handleLogout, isLoading, isLogin, userData } = props;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -31,7 +31,7 @@ export const ButtonProfile: FunctionComponent<ButtonProfileProps> = (props) => {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-       {isLogin && userData ? `${userData.firstName}  ${userData.lastName}`  :  "USER"}
+        {isLogin && userData ? `${userData.firstName}  ${userData.lastName}` : "USER"}
       </Button>
       <Menu
         id="basic-menu"
@@ -47,10 +47,7 @@ export const ButtonProfile: FunctionComponent<ButtonProfileProps> = (props) => {
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
       <a
-        className="dropdown-toggle flex items-center hidden-arrow  transition
-              duration-150
-              ease-in-out
-              whitespace-nowrap"
+        className="dropdown-toggle flex items-center hidden-arrow  transition duration-150 ease-in-out whitespace-nowrap"
         href="#"
         id="dropdownMenuButton2"
         role="button"

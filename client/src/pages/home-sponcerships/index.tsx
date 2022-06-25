@@ -36,10 +36,11 @@ const HomeSponcerShipsPage: NextPage = () => {
         Swal.fire({
           position: "top-end",
           icon: "error",
-          title: "Something went wrong!",
+          title: "Need login first!",
           showConfirmButton: false,
           timer: 2000,
         });
+        router.push("/");
       }
     } catch (err) {
       console.log(err);

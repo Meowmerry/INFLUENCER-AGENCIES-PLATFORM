@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,FunctionComponent } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { ButtonProfile } from "../Login/ButtonProfile";
 import Link from "next/link";
+import { UserData } from "../sponcership/interface/user-interface";
+interface NavProfileProps {
+  isLogin: boolean;
+  handleLogout: () => void;
+  isLoading?: boolean;
+  userData: UserData | undefined
+}
 
-export const NavProfile = () => {
-  const router = useRouter();
-
+export const NavProfile: FunctionComponent<NavProfileProps> = (props) => {
+  const { handleLogout, isLoading, isLogin,userData } = props;
+ 
   return (
     <div>
       <nav >
@@ -22,7 +29,7 @@ export const NavProfile = () => {
             </a>
           </div>
           <div className="flex md:order-2">
-            <ButtonProfile />
+            <ButtonProfile handleLogout={handleLogout} isLogin={isLogin} userData={userData} isLoading={isLoading} />
           </div>
           <div
             className="hidden justify-be tween items-center w-full md:flex md:w-auto md:order-1"

@@ -48,7 +48,7 @@ const Login: FunctionComponent<LoginProps> = (props) => {
             icon: "error",
             title: "Something went wrong!",
             showConfirmButton: false,
-            timer: 1500,
+            timer: 2000,
           });
         }
       } else if (loginData.role === "brand") {

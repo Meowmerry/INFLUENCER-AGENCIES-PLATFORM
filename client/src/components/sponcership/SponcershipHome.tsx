@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import {
   Button,
   Card,
@@ -10,27 +10,30 @@ import {
 import { itemData } from "./mockData";
 import {getSession} from '../../services/helper'
 import { getInfluencerProfile } from "../../services/api/getData";
+import Swal from "sweetalert2";
+import { useRouter } from "next/router";
+import { UserData } from "./interface/user-interface";
 
-interface HomeSponcershipsProps {}
+interface HomeSponcershipsProps {
+  isLogin: boolean;
+  isLoading?: boolean;
+  userData: UserData | undefined
+}
 
 export const HomeSponcerships: FunctionComponent<HomeSponcershipsProps> = () => {
+  const router = useRouter();
   const token = getSession()
-  useEffect(() => {
-    getProfileInc()
-  }, [])
+  const [userData, setUserData] = useState()
   
-  const getProfileInc = async () => {
-    try {
-      if (token) {
-        const res = await getInfluencerProfile()
-        console.log('res line 26-->',res)
-      } else {
-       
-      }
-    } catch (err) {
-      console.log(err)
-    }
-   
+  const SandPropersal = () => {
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Send Propersal Success!",
+      showConfirmButton: false,
+      timer: 2000,
+    });
+    router.push("/home-sponcerships");
   }
 
   return (
@@ -86,7 +89,7 @@ export const HomeSponcerships: FunctionComponent<HomeSponcershipsProps> = () => 
                {item.details}
               </Typography>
               <span className="flex justify-center text-xs btn-persal">
-                <Button className="text-xs mt-6">Send Propersal</Button>
+                <Button onClick={ ()=> SandPropersal()} className="text-xs mt-6">Send Propersal</Button>
               </span>
             </CardContent>
           </Card>

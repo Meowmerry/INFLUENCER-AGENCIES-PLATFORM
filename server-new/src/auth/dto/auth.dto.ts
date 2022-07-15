@@ -1,18 +1,18 @@
 import { IsEmail, IsEnum, IsNotEmpty, IsString } from "class-validator"
 
 export enum Role {
-  AGENCIE,
-  INFLUENCER,
-  ADMIN
+  AGENCIE='AGENCIE',
+  INFLUENCER='INFLUENCER',
+  ADMIN='ADMIN'
 }
 
 export class AuthDto {
   @IsEmail()
   @IsNotEmpty()
-  email: String
+  email: string
   @IsString()
   @IsNotEmpty()
-  password: String
+  password: string
   @IsEnum(Role)
   role: Role
 }

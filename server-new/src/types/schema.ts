@@ -7,6 +7,7 @@
 
 /* tslint:disable */
 /* eslint-disable */
+
 export enum Role {
     ADMIN = "ADMIN",
     AGENCIE = "AGENCIE",
@@ -25,29 +26,19 @@ export class SignUpInput {
     username: string;
 }
 
-export class Auth {
-    callName?: Nullable<string>;
-    createdAt: string;
-    email: string;
-    firstName?: Nullable<string>;
-    id: number;
-    lastName?: Nullable<string>;
-    role: string;
-    updatedAt: string;
-    username: string;
-}
-
 export abstract class IMutation {
-    abstract signin(signInInput: SignInInput): SignResponse | Promise<SignResponse>;
+    abstract signin(signInInput: SignInInput): SigninAndSignupResponse | Promise<SigninAndSignupResponse>;
 
-    abstract signup(signUpInput: SignUpInput): SignResponse | Promise<SignResponse>;
+    abstract signup(signUpInput: SignUpInput): SigninAndSignupResponse | Promise<SigninAndSignupResponse>;
 }
 
 export abstract class IQuery {
-    abstract GetUser(id: number): Auth | Promise<Auth>;
+    abstract user(username: string): User | Promise<User>;
+
+    abstract users(): User[] | Promise<User[]>;
 }
 
-export class SignResponse {
+export class SigninAndSignupResponse {
     accessToken: string;
     refreshToken: string;
     role: Role;
@@ -55,10 +46,16 @@ export class SignResponse {
 }
 
 export class User {
+    callName?: Nullable<string>;
+    createdAt: DateTime;
     email: string;
+    firstName?: Nullable<string>;
     id: number;
-    role: string;
+    lastName?: Nullable<string>;
+    role: Role;
+    updatedAt: DateTime;
     username: string;
 }
 
+export type DateTime = any;
 type Nullable<T> = T | null;

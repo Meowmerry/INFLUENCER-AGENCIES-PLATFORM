@@ -1,28 +1,45 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  Int,
+  Context,
+} from '@nestjs/graphql';
 import { AuthService } from './auth.service';
 import { Auth } from './entities/auth.entity';
 import { UpdateAuthInput } from './dto/update-auth.input';
 import { SignUpInput } from './dto/signup-input';
-import { SignResponse } from './dto/sign-response';
 import { SignInInput } from './dto/signin-input';
+import { SigninAndSignupResponse } from './dto/signin-and-signup-response';
+import { UseGuards } from '@nestjs/common';
+import { LocalAuthGuard } from './local-auth-guard';
 
 @Resolver(() => Auth)
 export class AuthResolver {
-  constructor(private readonly authService: AuthService) {
-  }
+  constructor(
+    private readonly authService: AuthService,
+  ) {}
 
-  @Mutation(() => SignResponse)
-  signup(@Args('signUpInput') signUpInput: SignUpInput) {
+  @Mutation(() => SigninAndSignupResponse)
+  signup(
+    @Args('signUpInput') signUpInput: SignUpInput,
+  ) {
     return this.authService.signup(signUpInput);
   }
 
-  @Mutation(() => SignResponse)
-  signin(@Args('signInInput') signInInput: SignInInput) {
-    return this.authService.sigin(signInInput);
+  @Mutation(() => SigninAndSignupResponse)
+  @UseGuards(LocalAuthGuard)
+  signin(
+    @Args('signInInput') signInInput: SignInInput,
+    @Context() context,
+  ) {
+    // return this.authService.sigin(signInInput);
+    return this.authService.sigin(context.user);
   }
 
-  @Query(() => Auth, { name: 'GetUser' })
+  /*@Query(() => Auth, { name: 'GetUser' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.authService.findOne(id);
-  }
+  }*/
 }

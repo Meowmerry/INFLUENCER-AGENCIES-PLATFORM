@@ -2,42 +2,19 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Auth {
-  """callName"""
-  callName: String
-
-  """createdAt"""
-  createdAt: String!
-
-  """email"""
-  email: String!
-
-  """firstName"""
-  firstName: String
-
-  """id"""
-  id: Int!
-
-  """lastName"""
-  lastName: String
-
-  """role"""
-  role: String!
-
-  """updatedAt"""
-  updatedAt: String!
-
-  """username"""
-  username: String!
-}
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type Mutation {
-  signin(signInInput: SignInInput!): SignResponse!
-  signup(signUpInput: SignUpInput!): SignResponse!
+  signin(signInInput: SignInInput!): SigninAndSignupResponse!
+  signup(signUpInput: SignUpInput!): SigninAndSignupResponse!
 }
 
 type Query {
-  GetUser(id: Int!): Auth!
+  user(username: String!): User!
+  users: [User!]!
 }
 
 """The supported roles."""
@@ -57,13 +34,6 @@ input SignInInput {
   username: String!
 }
 
-type SignResponse {
-  accessToken: String!
-  refreshToken: String!
-  role: Role!
-  user: User!
-}
-
 input SignUpInput {
   email: String!
   password: String!
@@ -71,9 +41,34 @@ input SignUpInput {
   username: String!
 }
 
+type SigninAndSignupResponse {
+  accessToken: String!
+  refreshToken: String!
+  role: Role!
+  user: User!
+}
+
 type User {
+  """how to call this user for short"""
+  callName: String
+  createdAt: DateTime!
+
+  """user's email"""
   email: String!
+
+  """user's first name"""
+  firstName: String
+
+  """user id"""
   id: Int!
-  role: String!
+
+  """user's last name"""
+  lastName: String
+
+  """user's role"""
+  role: Role!
+  updatedAt: DateTime!
+
+  """username"""
   username: String!
 }

@@ -1,0 +1,79 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Auth {
+  """callName"""
+  callName: String
+
+  """createdAt"""
+  createdAt: String!
+
+  """email"""
+  email: String!
+
+  """firstName"""
+  firstName: String
+
+  """id"""
+  id: Int!
+
+  """lastName"""
+  lastName: String
+
+  """role"""
+  role: String!
+
+  """updatedAt"""
+  updatedAt: String!
+
+  """username"""
+  username: String!
+}
+
+type Mutation {
+  signin(signInInput: SignInInput!): SignResponse!
+  signup(signUpInput: SignUpInput!): SignResponse!
+}
+
+type Query {
+  GetUser(id: Int!): Auth!
+}
+
+"""The supported roles."""
+enum Role {
+  """The ADMIN role."""
+  ADMIN
+
+  """The AGENCIE role."""
+  AGENCIE
+
+  """The INFLUENCER  role."""
+  INFLUENCER
+}
+
+input SignInInput {
+  password: String!
+  username: String!
+}
+
+type SignResponse {
+  accessToken: String!
+  refreshToken: String!
+  role: Role!
+  user: User!
+}
+
+input SignUpInput {
+  email: String!
+  password: String!
+  role: Role!
+  username: String!
+}
+
+type User {
+  email: String!
+  id: Int!
+  role: String!
+  username: String!
+}

@@ -10,7 +10,6 @@ export interface IAuthService {
     user: User;
   }>;
 
-  // sigin(signinInput: SignInInput): Promise<{ accessToken: string; refreshToken: string; user: User; }>;
   sigin(userEntity: UserEntity): Promise<{
     accessToken: string;
     refreshToken: string;

@@ -11,20 +11,13 @@ import { join } from 'path';
 import { PrismaService } from './prisma/prisma.service';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
-import { Role } from './auth/dto/signup-input';
 import { UserModule } from './user/user.module';
+import { GraphQLDateTime } from 'graphql-iso-date';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
-      /*resolvers: {
-        Role: {
-          ADMIN: Role.ADMIN,
-          INFLUENCER: Role.INFLUENCER,
-          AGENCIE: Role.AGENCIE,
-        },
-      },*/
       driver: ApolloDriver,
       sortSchema: true,
       // plugins: [ApolloServerPluginLandingPageLocalDefault()],
@@ -39,11 +32,13 @@ import { UserModule } from './user/user.module';
           'src/types/schema.ts',
         ),
         outputAs: 'class',
+
       },
       debug: true,
       introspection: true,
       playground: true,
       cors: true,
+      resolvers: { DateTime: GraphQLDateTime },
     }),
     AuthModule,
     UserModule,
@@ -51,4 +46,5 @@ import { UserModule } from './user/user.module';
   controllers: [],
   providers: [PrismaService],
 })
-export class AppModule {}
+export class AppModule {
+}

@@ -5,13 +5,7 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-
 import { PrismaService } from 'src/prisma/prisma.service';
-import {
-  Role,
-  SignUpInput,
-} from './dto/signup-input';
-import { UpdateAuthInput } from './dto/update-auth.input';
 import * as argon from 'argon2';
 import { User } from '@prisma/client';
 import { IAuthService } from './interface';
@@ -19,6 +13,7 @@ import { SignInInput } from './dto/signin-input';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { UserService } from 'src/user/user.service';
 import { User as UserEntity } from 'src/user/entities/user.entity';
+import { Role, SignUpInput } from './dto/signup-input';
 
 @Injectable()
 export class AuthService implements IAuthService {
@@ -88,6 +83,7 @@ export class AuthService implements IAuthService {
     // const { username, password } = signinInput;
     // const user = await this.validateUser(username, password);
 
+    console.log('userEntity',userEntity)
     const { id, email, username } = userEntity;
     const { accessToken, refreshToken } =
       await this.createTokens(
@@ -130,29 +126,6 @@ export class AuthService implements IAuthService {
       throw new UnauthorizedException();
     }
     return user;
-  }
-
-  /*async findOne(id: number): Promise<User> {
-    const user = await this.prisma.user.findUnique({
-      where: {
-        id,
-      },
-    });
-    if (!user) {
-      throw new ForbiddenException('User not found');
-    }
-    return user;
-  }*/
-
-  update(
-    id: number,
-    updateAuthInput: UpdateAuthInput,
-  ) {
-    return `This action updates a #${id} auth`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} auth`;
   }
 
   async createTokens(

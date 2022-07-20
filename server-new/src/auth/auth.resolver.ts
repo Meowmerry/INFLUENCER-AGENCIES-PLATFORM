@@ -8,7 +8,6 @@ import {
 } from '@nestjs/graphql';
 import { AuthService } from './auth.service';
 import { Auth } from './entities/auth.entity';
-import { UpdateAuthInput } from './dto/update-auth.input';
 import { SignUpInput } from './dto/signup-input';
 import { SignInInput } from './dto/signin-input';
 import { SigninAndSignupResponse } from './dto/signin-and-signup-response';
@@ -35,6 +34,7 @@ export class AuthResolver {
     @Context() context,
   ) {
     // return this.authService.sigin(signInInput);
+    console.log('context.user',context)
     return this.authService.sigin(context.user);
   }
 

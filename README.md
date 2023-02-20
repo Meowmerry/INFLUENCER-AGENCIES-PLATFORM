@@ -6,6 +6,10 @@
 
 🌱 This project build Express on server, React on client by TypeScript 🌱
 
+![flu (1)](https://user-images.githubusercontent.com/50789325/220193337-568374ba-6b23-4784-b519-0defc71a5d1e.gif)
+
+
+
 ![Landing-Page](https://user-images.githubusercontent.com/50789325/170897457-b7b44016-eaec-4824-889f-2595435f64b2.png)
 
 

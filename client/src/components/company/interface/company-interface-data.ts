@@ -4,7 +4,7 @@ export type CompanyFormData = any;
 
 export interface CompanyRegister {
     companyName: string;
-    webSite:string:
+    webSite:string;
     firstName: string;
     lastName: string;
     email: string;
